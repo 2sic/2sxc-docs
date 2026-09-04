@@ -111,15 +111,198 @@
 <p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
 </div>
 <h2 id="purpose">Purpose</h2>
-<p>This page documents backend contribution guidelines for DataSource logic used by UI-related features.</p>
-<h2 id="scope">Scope</h2>
+<p>Use a DataSource to provide data for the UI.
+The UI can request this data through the existing <code>System.SysData</code> query, so a new list does not need its own WebApi controller and route.
+The DataSource handles configuration and output streams, existing backend services still perform the actual work.</p>
+<p>This guide describes the internal backend pattern, including the v22 raw-model APIs.
+Start with the <a class="xref" href="index.html">backend development setup</a>.</p>
+<h2 id="how-the-request-works">How the Request Works</h2>
+<ol>
+<li>The UI calls <code>app/auto/query/System.SysData/Default</code>, supplying <code>appId</code>, <code>SysDataSource</code>, and any source-specific parameters.</li>
+<li>The <code>System.SysData</code> query uses the <code>SysData</code> DataSource to find the requested source in <code>DataSourceCatalog</code>.</li>
+<li><code>SysData</code> checks the source's <code>DataConfidentiality</code> against the current user.</li>
+<li>It creates the source with the current app identity and lookup engine, exposing query-string parameters as configuration values.</li>
+<li>The requested output streams are evaluated and serialized through the query API.</li>
+</ol>
+<p>For example, this relative URL requests the languages of app 42:</p>
+<pre><code class="lang-http">GET app/auto/query/System.SysData/Default?appId=42&amp;SysDataSource=System.AppLanguages&amp;$casing=camel
+</code></pre>
+<p>The URL is relative to the 2sxc API root and needs the usual platform and authentication context.
+Use the existing UI HTTP services to supply that context.
+The query response is an object containing stream arrays, even when a source returns only one item.
+With <code>$casing=camel</code>, the default stream is named <code>default</code>.</p>
+<p>Use the actual query name <strong><code>System.SysData</code></strong>.</p>
+<h2 id="define-the-datasource">Define the DataSource</h2>
+<p>A typical UI source derives from <code>CustomDataSource</code> and has a <code>[VisualQuery]</code> attribute.
+The attribute supplies both its lookup names and its access classification, even if the source is hidden from VisualQuery.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NameId</code></td>
+<td>A unique, stable GUID identifying this source. Generate a new one for a new source.</td>
+</tr>
+<tr>
+<td><code>NameIds</code></td>
+<td>A readable alias such as <code>System.AppLanguages</code>, used by <code>SysDataSource</code>. Keep aliases unique.</td>
+</tr>
+<tr>
+<td><code>NiceName</code> and <code>UiHint</code></td>
+<td>A readable name and description.</td>
+</tr>
+<tr>
+<td><code>Type = DataSourceType.System</code></td>
+<td>Classifies this as a system source.</td>
+</tr>
+<tr>
+<td><code>Audience = Audience.System</code></td>
+<td>Hides an internal UI source from the normal VisualQuery chooser.</td>
+</tr>
+<tr>
+<td><code>DataConfidentiality</code></td>
+<td>Determines which users may request it through <code>SysData</code>. Set this explicitly.</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>[PrivateApi]</code> for internal implementation classes, following the surrounding project conventions.
+<code>Audience</code> and API-documentation attributes do not grant or restrict data access.</p>
+<p>The catalog discovers compiled DataSource types through assembly scanning and resolves their <code>NameId</code> and <code>NameIds</code>.</p>
+<h2 id="define-the-output-model">Define the Output Model</h2>
+<p>For a simple list, define a record implementing <code>IRawEntityAutoConvert</code>.
+Add <code>[ContentType]</code> to describe its generated content type and <code>[ContentTypeTitle]</code> to identify the display title.
+For example, <code>ScopeModel</code> in <code>ToSic.Eav.DataSources/DataSources.Sys/ScopeModel.cs</code> contains:</p>
+<pre><code class="lang-csharp">[ContentType(
+    Name = &quot;Scope&quot;,
+    Guid = &quot;f134e3c1-f09f-4fbc-85be-de43a64c6eed&quot;,
+    Description = &quot;Data Scope&quot;,
+    Scope = &quot;System&quot;
+)]
+public record ScopeModel : IRawEntityAutoConvert
+{
+    public required string NameId { get; init; }
+
+    [ContentTypeTitle]
+    public required string Name { get; init; }
+
+    public required int TypesTotal { get; init; }
+    public required int TypesInherited { get; init; }
+    public required int TypesOfApp { get; init; }
+}
+</code></pre>
+<p>This is an existing model, use your own name and GUID when creating another one.
+The conversion creates entities for the query pipeline, it does not save these rows as app content.</p>
+<p>Use <code>ProvideOutRaw</code> for these models so the DataFactory performs the conversion to <code>IEntity</code>.
+<code>IRawEntityAutoConvert</code> handles automatic property conversion.</p>
+<p>Check conversion options when the UI requires more than simple scalar fields:</p>
 <ul>
-<li>How UI-facing DataSources are structured</li>
-<li>Where to place code in the backend projects</li>
-<li>Common extension and testing patterns</li>
+<li><code>AllowUnknownValueTypes = true</code> allows values such as nested DTOs to pass through conversion. Use it deliberately and check the resulting JSON.</li>
 </ul>
-<h2 id="status">Status</h2>
-<p>WIP - content to be completed.</p>
+<p><code>AppLanguages</code> and its <code>LanguageStatusRaw</code> model are useful examples of a source with nested permission information.</p>
+<h2 id="register-lazy-output-streams">Register Lazy Output Streams</h2>
+<p>Register callbacks in the constructor, and load data inside those callbacks.
+The catalog can construct a source just to inspect its stream names, before it has the app configuration needed to load data.</p>
+<p>For example, <code>AppLanguages</code> registers its default output like this:</p>
+<pre><code class="lang-csharp">public AppLanguages(
+    Dependencies services,
+    LanguagesBackend languagesBackend,
+    LazySvc&lt;IAppReaderFactory&gt; appReadersLazy)
+    : base(services, logName: &quot;Sxc.AppLangs&quot;,
+        connect: [languagesBackend, appReadersLazy])
+{
+    ProvideOutRaw(
+        () =&gt; GetLanguages(languagesBackend, appReadersLazy),
+        options: () =&gt; new()
+        {
+            AutoId = true,
+            AllowUnknownValueTypes = true,
+        });
+}
+</code></pre>
+<p><code>GetLanguages</code> obtains the app reader using <code>AppId</code>, delegates to <code>LanguagesBackend</code>, and returns a list of <code>LanguageStatusRaw</code> records.</p>
+<p>Without a <code>name</code>, <code>ProvideOutRaw</code> registers <code>Default</code>.
+For multiple result sets, register a callback for each named stream.</p>
+<h2 id="read-request-parameters">Read Request Parameters</h2>
+<p>Use <code>[Configuration]</code> properties and <code>Configuration.GetThis()</code> rather than reading HTTP parameters directly.
+For example, <code>SharedFields</code> declares:</p>
+<pre><code class="lang-csharp">[Configuration(Fallback = &quot;0&quot;)]
+public int AttributeId =&gt; Configuration.GetThis(fallback: 0);
+</code></pre>
+<p>The UI can supply the value through the same query request:</p>
+<pre><code class="lang-http">GET app/auto/query/System.SysData/Default?appId=42&amp;SysDataSource=System.SharedFields&amp;AttributeId=123&amp;$casing=camel
+</code></pre>
+<p><code>SysDataSource</code> selects the source; <code>AttributeId</code> becomes configuration for that source.
+Use <code>AppId</code> from the initialized DataSource for app-scoped work.
+Give optional settings explicit fallbacks, and validate required values before passing them to backend services.</p>
+<h2 id="apply-permissions">Apply Permissions</h2>
+<p><code>SysData</code> calls <code>DataSourceInfo.IsAllowed(user)</code> before constructing the requested source.
+The current implementation in <code>DataConfidentialityHelper</code> uses these rules:</p>
+<table>
+<thead>
+<tr>
+<th><code>DataConfidentiality</code></th>
+<th>Required user property</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Public</code></td>
+<td>No role requirement at this check</td>
+</tr>
+<tr>
+<td><code>Internal</code></td>
+<td><code>IsContentEditor</code></td>
+</tr>
+<tr>
+<td><code>Confidential</code></td>
+<td><code>IsSiteAdmin</code></td>
+</tr>
+<tr>
+<td><code>System</code></td>
+<td><code>IsSystemAdmin</code></td>
+</tr>
+<tr>
+<td><code>Unknown</code> (the default)</td>
+<td><code>IsSystemAdmin</code></td>
+</tr>
+<tr>
+<td><code>Never</code></td>
+<td>Always denied</td>
+</tr>
+</tbody>
+</table>
+<p>These are the source-level checks, in addition to the surrounding query/API permissions.
+In particular, <code>Internal</code> does not mean any logged-in user.
+The classification does not replace those checks or automatically protect every other way of constructing a DataSource.</p>
+<p>When migrating an old GET endpoint, review its authorization and output fields before replacing it.</p>
+<h2 id="call-it-from-the-ui">Call It from the UI</h2>
+<p>In <code>eav-ui</code>, use <code>SysDataService</code> to build the request and handle the stream wrapper.
+For example, from a service or component where <code>SysDataService</code> is already provided:</p>
+<pre><code class="lang-typescript">private readonly sysData = inject(SysDataService);
+
+readonly languages = this.sysData.get&lt;LanguageStatus&gt;({
+  source: 'System.AppLanguages',
+});
+</code></pre>
+<p>Here <code>LanguageStatus</code> is the UI model matching the returned fields.
+The helper supplies <code>appId</code>, <code>SysDataSource</code>, and <code>$casing=camel</code> by default.</p>
+<ul>
+<li><code>get&lt;T&gt;()</code> returns a signal containing the default stream's array.</li>
+<li><code>getFirst&lt;T&gt;()</code> returns a signal containing the first item, or <code>null</code>.</li>
+<li><code>getMany&lt;T&gt;()</code> returns the underlying HTTP resource with the stream object, useful for named streams and explicit loading/error handling.</li>
+<li><code>params</code> supplies source configuration; it can also be a signal for reactive requests.</li>
+<li><code>fields</code> sends <code>$select</code>, <code>refresh</code> triggers reloading, and <code>streams: '*'</code> requests all streams.</li>
+<li><code>noCamel: true</code> omits <code>$casing=camel</code> for consumers which need the original casing.</li>
+</ul>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Completed DataSource for UI contribution guidelines 2026-09-03</li>
+</ul>
 
 </article>
 
