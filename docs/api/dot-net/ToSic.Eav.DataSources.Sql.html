@@ -107,7 +107,7 @@
 
 
   <h1 id="ToSic_Eav_DataSources_Sql" data-uid="ToSic.Eav.DataSources.Sql" class="text-break">
-Class Sql  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L21"><i class="bi bi-code-slash"></i></a>
+Class Sql  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -208,7 +208,7 @@ It's also better because it separates data-retrieval from visualization.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
 [VisualQuery(NiceName = &quot;SQL Data&quot;, UiHint = &quot;Get data from a database using SQL&quot;, Icon = &quot;dynamic_form&quot;, Type = DataSourceType.Source, NameId = &quot;4bad53df-56ff-4eac-ba54-80f0d963f8ab&quot;, ConfigurationType = &quot;c76901b5-0345-4866-9fa3-6208de7f8543&quot;, NameIds = new string[] { &quot;ToSic.Eav.DataSources.Sql, ToSic.Eav.DataSources&quot;, &quot;ToSic.Eav.DataSources.SqlDataSource, ToSic.Eav.DataSources&quot; }, HelpLink = &quot;https://go.2sxc.org/DsSql&quot;)]
-public class Sql : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
+public class Sql : CustomDataSource, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
   </div>
 
 
@@ -222,6 +222,7 @@ public class Sql : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a></div>
       <div><span class="xref">Sql</span></div>
     </dd>
   </dl>
@@ -253,13 +254,10 @@ public class Sql : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_Immutable">CustomDataSource.Immutable</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_GetDefault">CustomDataSource.GetDefault()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_AppId">DataSourceBase.AppId</a>
@@ -272,6 +270,9 @@ public class Sql : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -327,7 +328,7 @@ public class Sql : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
 
   <h3 id="ToSic_Eav_DataSources_Sql_ConnectionString" data-uid="ToSic.Eav.DataSources.Sql.ConnectionString">
   ConnectionString
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>ConnectionString to the DB</p>
@@ -360,7 +361,7 @@ public string ConnectionString { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sql_ConnectionStringName" data-uid="ToSic.Eav.DataSources.Sql.ConnectionStringName">
   ConnectionStringName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Name of the ConnectionString in the Application.Config to use</p>
@@ -393,7 +394,7 @@ public string ConnectionStringName { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sql_ContentType" data-uid="ToSic.Eav.DataSources.Sql.ContentType">
   ContentType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Name of the ContentType which we'll pretend the items have.</p>
@@ -426,7 +427,7 @@ public string ContentType { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sql_EntityIdField" data-uid="ToSic.Eav.DataSources.Sql.EntityIdField">
   EntityIdField
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Name of the Column used as EntityId</p>
@@ -459,7 +460,7 @@ public string EntityIdField { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sql_SelectCommand" data-uid="ToSic.Eav.DataSources.Sql.SelectCommand">
   SelectCommand
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>SQL Command for selecting data.</p>
@@ -492,7 +493,7 @@ public string SelectCommand { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Sql_TitleField" data-uid="ToSic.Eav.DataSources.Sql.TitleField">
   TitleField
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Name of the Title Attribute of the Source DataTable</p>
@@ -525,7 +526,7 @@ public string TitleField { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L21" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Sql.cs/#L23" class="edit-link">Edit this page</a>
         </div>
 
 

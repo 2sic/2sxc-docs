@@ -107,7 +107,7 @@
 
 
   <h1 id="ToSic_Eav_DataSources_Csv" data-uid="ToSic.Eav.DataSources.Csv" class="text-break">
-Class Csv  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L20"><i class="bi bi-code-slash"></i></a>
+Class Csv  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -132,7 +132,7 @@ Class Csv  <a class="header-action link-secondary" title="View source" href="htt
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[PublicApi]
 [VisualQuery(NiceName = &quot;CSV Data&quot;, UiHint = &quot;Load data from a CSV file&quot;, Icon = &quot;description&quot;, Type = DataSourceType.Source, NameId = &quot;69f7b35e-057d-422a-8383-acbbbacfefb4&quot;, NameIds = new string[] { &quot;ToSic.Eav.DataSources.CsvDataSource, ToSic.Eav.DataSources&quot; }, ConfigurationType = &quot;|Config ToSic.Eav.DataSources.CsvDataSource&quot;, HelpLink = &quot;https://go.2sxc.org/DsCsv&quot;)]
-public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
+public class Csv : CustomDataSource, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
   </div>
 
 
@@ -146,6 +146,7 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a></div>
       <div><span class="xref">Csv</span></div>
     </dd>
   </dl>
@@ -171,13 +172,10 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_Immutable">CustomDataSource.Immutable</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_GetDefault">CustomDataSource.GetDefault()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_AppId">DataSourceBase.AppId</a>
@@ -190,6 +188,9 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -250,7 +251,7 @@ public class Csv : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIde
 
   <h3 id="ToSic_Eav_DataSources_Csv_ContentType" data-uid="ToSic.Eav.DataSources.Csv.ContentType">
   ContentType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Name of the content type which the imported entities have. This is fake, but may be necessary for later filtering of the types.
@@ -289,7 +290,7 @@ public string ContentType { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Csv_Delimiter" data-uid="ToSic.Eav.DataSources.Csv.Delimiter">
   Delimiter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Delimiter character in the CSV, usually a ',' or ';' but could also be a tab or something. Default is tab.</p>
@@ -322,7 +323,7 @@ public string Delimiter { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Csv_FilePath" data-uid="ToSic.Eav.DataSources.Csv.FilePath">
   FilePath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Path to the CSV file, relative to the website root</p>
@@ -355,7 +356,7 @@ public string FilePath { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Csv_IdColumnName" data-uid="ToSic.Eav.DataSources.Csv.IdColumnName">
   IdColumnName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Column in the CSV which contains the ID.</p>
@@ -388,7 +389,7 @@ public string? IdColumnName { get; set; }</code></pre>
 
   <h3 id="ToSic_Eav_DataSources_Csv_TitleColumnName" data-uid="ToSic.Eav.DataSources.Csv.TitleColumnName">
   TitleColumnName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The CSV column containing the title of the item - for dropdowns etc. and the EntityTitle property.</p>
@@ -421,7 +422,7 @@ public string? TitleColumnName { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/External/Csv.cs/#L22" class="edit-link">Edit this page</a>
         </div>
 
 

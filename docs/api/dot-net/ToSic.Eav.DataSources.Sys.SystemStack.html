@@ -125,7 +125,7 @@ Class SystemStack  <a class="header-action link-secondary" title="View source" h
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice]
 [VisualQuery(NiceName = &quot;System Stacks&quot;, UiHint = &quot;Settings and/or Resources as a Stack&quot;, Icon = &quot;dns&quot;, Type = DataSourceType.System, NameId = &quot;60806cb1-0c76-4c1e-8dfe-dcec94726f8d&quot;, NameIds = new string[] { &quot;System.SystemStack&quot; }, Audience = Audience.Advanced, DataConfidentiality = DataConfidentiality.Internal, ConfigurationType = &quot;f9aca0f0-1b1b-4414-b42e-b337de124124&quot;)]
-public class SystemStack : CustomDataSourceAdvanced, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
+public class SystemStack : CustomDataSource, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
   </div>
 
 
@@ -139,6 +139,7 @@ public class SystemStack : CustomDataSourceAdvanced, IDataSource, IAppIdentity, 
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a></div>
       <div><span class="xref">SystemStack</span></div>
     </dd>
   </dl>
@@ -164,13 +165,10 @@ public class SystemStack : CustomDataSourceAdvanced, IDataSource, IAppIdentity, 
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_Immutable">CustomDataSource.Immutable</a>
     </div>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_GetDefault">CustomDataSource.GetDefault()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_AppId">DataSourceBase.AppId</a>
@@ -183,6 +181,9 @@ public class SystemStack : CustomDataSourceAdvanced, IDataSource, IAppIdentity, 
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -236,21 +237,21 @@ public class SystemStack : CustomDataSourceAdvanced, IDataSource, IAppIdentity, 
 
   <a id="ToSic_Eav_DataSources_Sys_SystemStack__ctor_" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.#ctor*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Sys_SystemStack__ctor_ToSic_Eav_DataSource_CustomDataSourceAdvanced_Dependencies_ToSic_Eav_Apps_Sys_AppStack_AppDataStackService_ToSic_Eav_Apps_IAppReaderFactory_ToSic_Eav_Context_Sys_ZoneCulture_IZoneCultureResolver_ToSic_Eav_Data_Sys_PropertyDump_IPropertyDumpService_" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.#ctor(ToSic.Eav.DataSource.CustomDataSourceAdvanced.Dependencies,ToSic.Eav.Apps.Sys.AppStack.AppDataStackService,ToSic.Eav.Apps.IAppReaderFactory,ToSic.Eav.Context.Sys.ZoneCulture.IZoneCultureResolver,ToSic.Eav.Data.Sys.PropertyDump.IPropertyDumpService)">
+  <h3 id="ToSic_Eav_DataSources_Sys_SystemStack__ctor_ToSic_Eav_DataSource_CustomDataSource_Dependencies_ToSic_Eav_Apps_Sys_AppStack_AppDataStackService_ToSic_Eav_Apps_IAppReaderFactory_ToSic_Eav_Context_Sys_ZoneCulture_IZoneCultureResolver_ToSic_Eav_Data_Sys_PropertyDump_IPropertyDumpService_" data-uid="ToSic.Eav.DataSources.Sys.SystemStack.#ctor(ToSic.Eav.DataSource.CustomDataSource.Dependencies,ToSic.Eav.Apps.Sys.AppStack.AppDataStackService,ToSic.Eav.Apps.IAppReaderFactory,ToSic.Eav.Context.Sys.ZoneCulture.IZoneCultureResolver,ToSic.Eav.Data.Sys.PropertyDump.IPropertyDumpService)">
   SystemStack(Dependencies, AppDataStackService, IAppReaderFactory, IZoneCultureResolver, IPropertyDumpService)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources.Sys/SystemStack.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources.Sys/SystemStack.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SystemStack(CustomDataSourceAdvanced.Dependencies services, AppDataStackService dataStackService, IAppReaderFactory appReadFac, IZoneCultureResolver zoneCulture, IPropertyDumpService dumpService)</code></pre>
+    <pre><code class="lang-csharp hljs">public SystemStack(CustomDataSource.Dependencies services, AppDataStackService dataStackService, IAppReaderFactory appReadFac, IZoneCultureResolver zoneCulture, IPropertyDumpService dumpService)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">Dependencies</a></dt>
+    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">Dependencies</a></dt>
     <dd></dd>
     <dt><code>dataStackService</code> <span class="xref">AppDataStackService</span></dt>
     <dd></dd>

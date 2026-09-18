@@ -126,7 +126,7 @@ Class Metadata  <a class="header-action link-secondary" title="View source" href
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[VisualQuery(NiceName = &quot;Metadata&quot;, UiHint = &quot;Get the item&#39;s metadata&quot;, Icon = &quot;local_offer&quot;, Type = DataSourceType.Lookup, NameId = &quot;3ab4b010-2daa-4a7f-b882-635d2d9fa0a0&quot;, In = new string[] { &quot;Default*&quot; }, ConfigurationType = &quot;d7858b36-1ef1-4c3d-b15c-c567b0d7bdd4&quot;, HelpLink = &quot;https://go.2sxc.org/DsMetadata&quot;)]
 [InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;WIP&quot;)]
-public class Metadata : MetadataDataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
+public class Metadata : DataSourceProcessInBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
   </div>
 
 
@@ -140,7 +140,7 @@ public class Metadata : MetadataDataSourceBase, IDataSource, IAppIdentity, IZone
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
       <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a></div>
-      <div><span class="xref">MetadataDataSourceBase</span></div>
+      <div><span class="xref">DataSourceProcessInBase</span></div>
       <div><span class="xref">Metadata</span></div>
     </dd>
   </dl>
@@ -166,12 +166,6 @@ public class Metadata : MetadataDataSourceBase, IDataSource, IAppIdentity, IZone
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_CacheTimestamp">CustomDataSourceAdvanced.CacheTimestamp</a>
-    </div>
-    <div>
-      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html#ToSic_Eav_DataSource_CustomDataSourceAdvanced_DataFactory">CustomDataSourceAdvanced.DataFactory</a>
-    </div>
-    <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
     </div>
     <div>
@@ -185,6 +179,9 @@ public class Metadata : MetadataDataSourceBase, IDataSource, IAppIdentity, IZone
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Error">DataSourceBase.Error</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheTimestamp">DataSourceBase.CacheTimestamp</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_CacheChanged_System_Int64_">DataSourceBase.CacheChanged(long)</a>
@@ -259,7 +256,7 @@ public class Metadata : MetadataDataSourceBase, IDataSource, IAppIdentity, IZone
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">Dependencies</a></dt>
+    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSourceAdvanced.html">CustomDataSourceAdvanced</a>.<span class="xref">Dependencies</span></dt>
     <dd></dd>
   </dl>
 
@@ -297,7 +294,7 @@ public class Metadata : MetadataDataSourceBase, IDataSource, IAppIdentity, IZone
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Configuration]
-public override string? ContentTypeName { get; }</code></pre>
+public string? ContentTypeName { get; }</code></pre>
   </div>
 
 
@@ -321,25 +318,24 @@ public override string? ContentTypeName { get; }</code></pre>
 </h2>
 
 
-  <a id="ToSic_Eav_DataSources_Metadata_SpecificGet_" data-uid="ToSic.Eav.DataSources.Metadata.SpecificGet*"></a>
+  <a id="ToSic_Eav_DataSources_Metadata_GetDefault_" data-uid="ToSic.Eav.DataSources.Metadata.GetDefault*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Metadata_SpecificGet_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity__System_String_" data-uid="ToSic.Eav.DataSources.Metadata.SpecificGet(System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity},System.String)">
-  SpecificGet(IImmutableList&lt;IEntity&gt;, string?)
+  <h3 id="ToSic_Eav_DataSources_Metadata_GetDefault_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity__" data-uid="ToSic.Eav.DataSources.Metadata.GetDefault(System.Collections.Immutable.IImmutableList{ToSic.Eav.Data.IEntity})">
+  GetDefault(IImmutableList&lt;IEntity&gt;)
   <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Relationships/Metadata.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Method to override, returning the metadata entities for the inheriting class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override IEnumerable&lt;IEntity&gt; SpecificGet(IImmutableList&lt;IEntity&gt; originals, string? typeName)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override IEnumerable&lt;IEntity&gt; GetDefault(IImmutableList&lt;IEntity&gt; defaultIn)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>originals</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.iimmutablelist-1">IImmutableList</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>typeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><code>defaultIn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.iimmutablelist-1">IImmutableList</a>&lt;<a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a>&gt;</dt>
     <dd></dd>
   </dl>
 
