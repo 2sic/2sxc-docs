@@ -23,25 +23,26 @@ Here's a simple example:
 With Content-Type Composition, you can create the `Contact` Content-Type by combining fields from `Person` and `Company`.
 This is what you _could_ do:
 
-| Field       | Person    | Company       | Contact     | Notes |
-| ---         | ---       | ---           | ---         | --- |
-| Name        | 🔊 Master | 🚫 Own Field  | 🔗 Inherit | Company name has different description etc. so it does not inherit |
-| Email       | 🔊 Master |               | 🔗 Inherit | |
-| Phone       | 🔊 Master | 🔗 Inherit    | 🔗 Inherit | |
-| Address     |           | 🔊 Master     | 🔗 Inherit | |
-| Salutation  | 🔊 Master |               | 🔗 Inherit | |
-| Relationship|           |               | 🚫 Own Field | |
+| Field       | Person    | Company       | Contact       | Notes                                                               |
+| ---         | ---       | ---           | ---           | ---                                                                 |
+| Name        | 🔊 Master | 🚫 Own Field  | 🔗 Inherit    | Company name has different description etc. so it does not inherit  |
+| Email       | 🔊 Master |               | 🔗 Inherit    |                                                                     |
+| Phone       | 🔊 Master | 🔗 Inherit    | 🔗 Inherit    |                                                                     |
+| Address     |           | 🔊 Master     | 🔗 Inherit    |                                                                     |
+| Salutation  | 🔊 Master |               | 🔗 Inherit    |                                                                     |
+| Relationship|           |               | 🚫 Own Field  |                                                                     |
 
 Or you could do this:
 
-| Field       | PersonShared  | Person      | Company     | Contact     | Notes |
-| ---         |               | ---         | ---         | ---         | --- |
-| Name        | 🔊 Master     | 🔗 Inherit | 🚫 Own Field | 🔗 Inherit | Company name is different so it does not inherit |
-| Email       | 🔊 Master     | 🔗 Inherit |              | 🔗 Inherit | |
-| Phone       | 🔊 Master     | 🔗 Inherit | 🔗 Inherit   | 🔗 Inherit | |
-| Address     | 🔊 Master     |            | 🔗 Inherit   | 🔗 Inherit | |
-| Salutation  | 🔊 Master     | 🔗 Inherit |              | 🔗 Inherit | |
-| Relationship|               |            |              | 🚫 Own Field | |
+| Field       | PersonShared  | Person      | Company       | Contact       | Notes                                             |
+| ---         | ---           | ---         | ---           | ---           | ---                                               |
+| Name        | 🔊 Master     | 🔗 Inherit  | 🚫 Own Field  | 🔗 Inherit    | Company name is different so it does not inherit  |
+| Email       | 🔊 Master     | 🔗 Inherit  |               | 🔗 Inherit    |                                                   |
+| Phone       | 🔊 Master     | 🔗 Inherit  | 🔗 Inherit    | 🔗 Inherit    |                                                   |
+| Address     | 🔊 Master     |             | 🔗 Inherit    | 🔗 Inherit    |                                                   |
+| Salutation  | 🔊 Master     | 🔗 Inherit  |               | 🔗 Inherit    |                                                   |
+| Relationship|               |             |               | 🚫 Own Field  |                                                   |
+
 
 
 ## How Does Composition Relate to Inheritance
