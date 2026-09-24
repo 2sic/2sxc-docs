@@ -3,20 +3,20 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Develop an Angular App inside 2sxc and Dnn | 2sxc 22 for Dnn and Oqtane </title>
+      <title>Migrating Data.content$() to SxcApp.data() | 2sxc 22 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Develop an Angular App inside 2sxc and Dnn | 2sxc 22 for Dnn and Oqtane ">
+      <meta name="title" content="Migrating Data.content$() to SxcApp.data() | 2sxc 22 for Dnn and Oqtane ">
       
-      <link rel="icon" href="../../assets/favicon.ico">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
-      <meta name="docfx:tocrel" content="../toc.html">
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
       
-      <meta name="docfx:rel" content="../../">
+      <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/js-code/angular/integrate-angular-development.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/js-code/angular/sxc-angular/data-content-dollar.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,7 +31,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">      
   </head>
 
-  <script type="module" src="./../../public/docfx.min.js"></script>
+  <script type="module" src="./../../../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -50,8 +50,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../assets/logos/vcurrent/50.png" alt="">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,14 +102,14 @@
 
         
 
-        <article data-uid="JsCode.Angular.IntegrateAngularDevelopment">
+        <article data-uid="JsCode.Angular.DnnSxcAngular.DataContent$">
 
-<img src="../../pages/js-code/angular/assets/sxc-angular-banner-flat.jpg" width="100%">
-<h1 id="develop-an-angular-app-inside-2sxc-and-dnn">Develop an Angular App inside 2sxc and Dnn</h1>
+<img src="../../../pages/js-code/angular/assets/sxc-angular-banner-flat.jpg" width="100%">
+<h1 id="migrating-datacontent-to-sxcappdata">Migrating Data.content$() to SxcApp.data()</h1>
 <div class="float-end context-box-summary highlight-max" width="400px">
   <div class="fancybox-auto svg-highlight" style="width: 100%">
 <svg version="1.1" baseprofile="full" viewbox="0 0 3229 2529" xmlns="http://www.w3.org/2000/svg">
-  <image href="../../pages/basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
+  <image href="../../../pages/basics/stack/assets/stack-detailed.png" x="0" y="0" height="100%" width="100%"></image>
   <!-- Data Highlights -->
   <rect class="svg-highlight prepared data-all" x="0%" y="82%" width="84%" height="18%"></rect>
   <rect class="svg-highlight prepared data-data" x="19%" y="82%" width="64%" height="18%"></rect>
@@ -201,48 +201,33 @@
 </svg>
   </div>
   <div class="overlay-description">
-<p>you are here (click to zoom) - discover the <a class="xref" href="../../basics/index.html">stack</a></p>
+<p>you are here (click to zoom) - discover the <a class="xref" href="../../../basics/index.html">stack</a></p>
   </div>
 </div>
-<style>.context-box-summary .spa-all { visibility: visible; } </style>
-<p>Use the <a class="xref" href="../../extensions/app-extensions/by-2sxc/angular-loader/index.html">Angular Loader extension</a> with its <code>local</code> edition to develop an Angular app with hot reload inside a real Dnn page. This preserves Dnn authentication, the current 2sxc module context, WebAPI access, and edit toolbars while Angular code is served from your development machine.</p>
-<h2 id="prepare-the-app">Prepare the App</h2>
-<ol>
-<li><a class="xref" href="../../extensions/app-extensions/install/index.html">Install the Angular Loader extension</a> in the 2sxc app.</li>
-<li>Follow its <a class="xref" href="../../extensions/app-extensions/by-2sxc/angular-loader/index.html">local-edition instructions</a> to configure the local development server and generated files.</li>
-<li>Configure <a class="xref" href="sxc-angular/install.html">sxc-angular</a> in the Angular application.</li>
-</ol>
-<p>The <a class="xref" href="template-app.html">Angular Template App</a> already contains this setup and is the recommended starting point.</p>
-<h2 id="start-local-development">Start Local Development</h2>
-<p>From the template app's <code>ng</code> folder, install the dependencies and start Angular:</p>
-<pre><code class="lang-cmd">npm install
-npm run local
+<style>.context-box-summary .spa-2sxc-js { visibility: visible; } </style>
+<p>The old <code>Data.content$&lt;T&gt;(...)</code> shortcut is not part of sxc-angular v22.</p>
+<p>Use <code>SxcApp.data&lt;T&gt;()</code> and select the operation explicitly:</p>
+<pre><code class="lang-ts">import { SxcApp } from '@2sic.com/sxc-angular';
+import { Observable } from 'rxjs';
+
+export class BusinessUnitSelectorComponent {
+  readonly businessUnits$: Observable&lt;BusinessUnit[]&gt;;
+
+  constructor(app: SxcApp) {
+    const businessUnits = app.data&lt;BusinessUnit&gt;('BusinessUnit');
+
+    this.businessUnits$ = businessUnits.getAll();
+    // To retrieve one item:
+    // const businessUnit$ = businessUnits.getOne(402);
+  }
+}
 </code></pre>
-<p>The template starts the Angular development server on <code>localhost:4200</code>.</p>
-<p>Open the normal Dnn page containing the 2sxc app, then select the <code>local</code> edition using the app's edition selector. Do not open <code>localhost:4200</code> directly—the Dnn page supplies the authentication and 2sxc context.</p>
-<p>If the Dnn site uses HTTPS, start the HTTPS development server instead:</p>
-<pre><code class="lang-cmd">npm run local-ssl
-</code></pre>
-<p>Your browser may require you to trust the local development certificate before it can load the scripts.</p>
-<h2 id="how-requests-reach-2sxc">How Requests Reach 2sxc</h2>
-<p>The Angular Loader renders the Angular root element inside the Dnn page. During Angular bootstrap, <code>SxcInitializer.initialize(element)</code> reads that element's 2sxc context. The interceptor registered by <code>provideSxc()</code> then sends data, query, and WebAPI requests to the Dnn/2sxc site with the required headers.</p>
-<h2 id="build-an-edition">Build an Edition</h2>
-<p>The current template provides scripts for deploying production builds into the app's edition folders:</p>
-<pre><code class="lang-cmd">npm run build-to-staging
-npm run build-to-live
-</code></pre>
-<p>Use staging for review before publishing the same app as the live edition.</p>
-<h2 id="network-shares-and-watchpack-errors">Network Shares and Watchpack Errors</h2>
-<p>Native file watching may fail when the Angular workspace is located on a mapped or UNC network drive. If Watchpack repeatedly reports <code>UNKNOWN: unknown error, watch</code>, run Angular with polling:</p>
-<pre><code class="lang-cmd">npm run local -- --poll=1000
-</code></pre>
-<p>You can also add <code>--poll=1000</code> to the template's <code>local</code> npm script if this workspace always requires polling.</p>
-<p>For loader configuration and edition switching, follow the <a class="xref" href="../../extensions/app-extensions/by-2sxc/angular-loader/index.html">Angular Loader documentation</a>. For the complete implementation, browse the <a class="xref" href="https://github.com/2sic/app-template-angular">Angular Template App source</a>.</p>
+<p>See <a class="xref" href="data-content.html">Content with SxcApp.data()</a> for create, update, and delete operations.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/js-code/angular/integrate-angular-development.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/js-code/angular/sxc-angular/data-content-dollar.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
