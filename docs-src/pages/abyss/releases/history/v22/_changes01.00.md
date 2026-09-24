@@ -3,6 +3,8 @@
 
 #### Highlights
 
+1. Added a lot more XML Docs for C# APIs (VS Code IntelliSense)
+
 <!-- 1. 💃🏼 Models API
 1. New App Extension **vCard**
 1. Linux support for Oqtane
@@ -47,6 +49,7 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 1. In addition, a new/separate App Extension **vCard** was created, which is a much better implementation of the same idea.
 1. An internal `GetOnce<T>` API was changed to be `LazyGet<T>` -->
 
+
 #### Copilot Enhancements ✈️
 
 <!-- 1. ✈️ Data Copilot should not generate Ephemeral fields
@@ -84,3 +87,6 @@ This is kind of a breaking change, but we believe it's not used yet, so it shoul
 #### Internal and Code Hygiene
 
 1. Slim down DataSources - move logic to handle `any` data to `DataSource16` (originally in `DataSourceCustom`)
+1. Further clean up public APIs to hide APIs which should not be used.
+1. Republished npm packages `@2sic/2sxc-typings` - <https://www.npmjs.com/package/@2sic.com/2sxc-typings>
+1. NPM package for sxc-angular republished with v22, various changes. <https://www.npmjs.com/package/@2sic.com/sxc-angular>
