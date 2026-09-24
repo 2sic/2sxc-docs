@@ -115,7 +115,7 @@ The standard implementation is that API-Calls include special HTTP headers with 
 
 ### Providing an Own Value or Overriding the Default Page/Module
 
-The default calls on the **2sxc JS API** including **dnn-sxc-angular** will automatically set these headers if it can. 
+The default calls on the **2sxc JS API**, including **sxc-angular**, automatically set these headers when context is available.
 
 If you have a reason to include alternate values, just make sure that you change the headers either by modifying the request before it's sent, or by using another http-caller like jQuery. 
 
