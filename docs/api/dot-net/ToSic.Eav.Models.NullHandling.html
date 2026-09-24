@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Namespace ToSic.Sxc.Data | 2sxc 22 for Dnn and Oqtane </title>
+      <title>Enum NullHandling | 2sxc 22 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace ToSic.Sxc.Data | 2sxc 22 for Dnn and Oqtane ">
+      <meta name="title" content="Enum NullHandling | 2sxc 22 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/api-docs/api/dot-net/ToSic.Sxc/Data/Sxc.Data.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_Models_NullHandling.md&amp;value=---%0Auid%3A%20ToSic.Eav.Models.NullHandling%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,85 +100,86 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        
+        <div class="alert alert-danger d-block" role="alert">
+      ℹ️ This enum is a work-in-progress API and can change at any time. 
+  It's documented so you see how it works. <br>
+  🛑 Do not use it, as future changes could break your code.
+    </div>
 
-        <article data-uid="ToSic.Sxc.Data">
+        <article data-uid="ToSic.Eav.Models.NullHandling">
 
-  <h1 id="ToSic_Sxc_Data" data-uid="ToSic.Sxc.Data" class="text-break">Namespace ToSic.Sxc.Data</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual">
-<p>The data system used in 2sxc.
-It's primary purpose is to ensure that you can easily
-use data objects to write templates, tokens and more.</p>
-</div>
-  <div class="markdown level0 remarks"></div>
 
-    <h3 id="namespaces">
-Namespaces
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.Models.html">ToSic.Sxc.Data.Models</a></dt>
-      <dd></dd>
-    </dl>
-    <h3 id="interfaces">
-Interfaces
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a></dt>
-      <dd><p>This is an older <em>dynamic</em> wrapper for IEntity objects. It provides <em>dynamic</em> access to underlying properties.</p>
+
+
+  <h1 id="ToSic_Eav_Models_NullHandling" data-uid="ToSic.Eav.Models.NullHandling" class="text-break">
+Enum NullHandling  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/NullHandling.cs/#L3"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Eav.Data.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[WorkInProgressApi(&quot;WIP v22&quot;)]
+public enum NullHandling</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="ToSic_Eav_Models_NullHandling_Default"><code>Default = 0</code></dt>
+  <dd><p>Represents an undefined state.
+Will usually behave the same as <a class="xref" href="ToSic.Eav.Models.NullHandling.html#ToSic_Eav_Models_NullHandling_ReturnNull">ReturnNull</a>.</p>
+<p>In rare cases the behavior might be different, since the system can detect if it was explicitly set or not.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.IDynamicStack.html">IDynamicStack</a></dt>
-      <dd><p>This is a dynamic object which contains multiple dynamic objects (Sources).</p>
+  
+    <dt id="ToSic_Eav_Models_NullHandling_ReturnModel"><code>ReturnModel = 4</code></dt>
+  <dd><p>If data is null, force conversion, even if the model may not be able to handle it.</p>
+<p>This should only be used if you are sure that the model can handle null sources,
+or if you want to force it to do so for testing purposes.</p>
+<p>Exceptions during conversion raised by the model itself will still be thrown.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.IField.html">IField</a></dt>
-      <dd><p>This describes a field-property of an item/entity.</p>
+  
+    <dt id="ToSic_Eav_Models_NullHandling_ReturnNull"><code>ReturnNull = 2</code></dt>
+  
+  <dd><p>If data is null, just return null.
+No conversion will be attempted, and no exception will be thrown.
+This is the default behavior.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.IPublishing.html">IPublishing</a></dt>
-      <dd><p>Publishing Information for <a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a>s.</p>
+    <dt id="ToSic_Eav_Models_NullHandling_Throw"><code>Throw = 8</code></dt>
+  
+  <dd><p>If data is null, throw an exception.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.ISecureData-1.html">ISecureData&lt;TValue&gt;</a></dt>
-      <dd><p>Objects which contain secure/encrypted data and can be decrypted / verified.</p>
+    <dt id="ToSic_Eav_Models_NullHandling_TryOrNull"><code>TryOrNull = 16</code></dt>
+  
+  <dd><p>If data is null, try to convert.
+If the model does not accept null, it will return null.
+If the model setup operation throws an exception, it will be raised, as it shows bad model design or a very unusual situation.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.ITyped.html">ITyped</a></dt>
-      <dd><p>Objects which usually wrap other objects to provide strictly typed access to properties.</p>
+    <dt id="ToSic_Eav_Models_NullHandling_TryOrThrow"><code>TryOrThrow = 32</code></dt>
+  
+  <dd><p>If data is null, try to convert. If the model does not accept null, it will throw an exception.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.ITypedItem.html">ITypedItem</a></dt>
-      <dd><p>A typed item to access <a class="xref" href="ToSic.Eav.Data.IEntity.html">IEntity</a> data in a strongly typed way.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.ITypedMetadata.html">ITypedMetadata</a></dt>
-      <dd><p>Metadata on Dynamic Objects - like <a class="xref" href="ToSic.Sxc.Data.IDynamicEntity.html">IDynamicEntity</a> or <a class="xref" href="ToSic.Sxc.Adam.IAsset.html">IAsset</a> (files/folders).</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.ITypedQuery.html">ITypedQuery</a></dt>
-      <dd><p>Query object from <a class="xref" href="ToSic.Sxc.Apps.IAppTyped.html#ToSic_Sxc_Apps_IAppTyped_GetQuery_System_String_ToSic_Sys_Coding_NoParamOrder_ToSic_Eav_DataSource_IDataSourceLinkable_System_Object_">GetQuery(string?, NoParamOrder, IDataSourceLinkable?, object?)</a> an App in <strong>Typed</strong> mode, with quick get-and-convert-helpers such as <code>GetAll</code> or <code>GetOne</code>.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="ToSic.Sxc.Data.ITypedStack.html">ITypedStack</a></dt>
-      <dd><p>The stack as typed object.</p>
-</dd>
-    </dl>
+  </dl>
+
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/api-docs/api/dot-net/ToSic.Sxc/Data/Sxc.Data.md/#L2" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Data/Models/NullHandling.cs/#L3" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -3,9 +3,9 @@
   <!-- 2sxc docs -->
   <head>
     <meta charset="utf-8">
-      <title>Class Paging | 2sxc 22 for Dnn and Oqtane </title>
+      <title>Class RecycleBin | 2sxc 22 for Dnn and Oqtane </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Paging | 2sxc 22 for Dnn and Oqtane ">
+      <meta name="title" content="Class RecycleBin | 2sxc 22 for Dnn and Oqtane ">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/api-docs/api/dot-net/ToSic.Eav/DataSources/Paging.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/2sic/eav-server/new/develop/apiSpec/new?filename=ToSic_Eav_DataSources_RecycleBin.md&amp;value=---%0Auid%3A%20ToSic.Eav.DataSources.RecycleBin%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -100,71 +100,33 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        
+        <div class="alert alert-warning d-block" role="alert">
+      ℹ️ This class is an internal API and can change at any time. 
+  It's documented so you see how it works. <br>
+  ⚠️ Do not use it, or anything with <code>Sys</code> or <code>Internal</code> namespaces in your code, as future changes could break your code.
+    </div>
 
-        <article data-uid="ToSic.Eav.DataSources.Paging">
+        <article data-uid="ToSic.Eav.DataSources.RecycleBin">
 
 
 
-  <h1 id="ToSic_Eav_DataSources_Paging" data-uid="ToSic.Eav.DataSources.Paging" class="text-break">
-Class Paging  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Reorganize/Paging.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <h1 id="ToSic_Eav_DataSources_RecycleBin" data-uid="ToSic.Eav.DataSources.RecycleBin" class="text-break">
+Class RecycleBin  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Work/DataSources/RecycleBin.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
     <dl><dt>Namespace</dt><dd><a class="xref" href="ToSic.html">ToSic</a>.<a class="xref" href="ToSic.Eav.html">Eav</a>.<a class="xref" href="ToSic.Eav.DataSources.html">DataSources</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>ToSic.Eav.DataSources.dll</dd></dl>
+  <dl><dt>Assembly</dt><dd>ToSic.Eav.Work.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The base class for all DataSources, especially custom DataSources.
-It must always be inherited.
-It provides a lot of core functionality to get configurations, ensure caching and more.</p>
-<p>Important: in most cases you will inherit the <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a> DataSource for custom data sources.</p>
-</div>
-  <div class="markdown conceptual">
-<p>The <strong>Paging</strong> <a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> is part of the <a class="xref" href="../../basics/query/data-sources/index.html">Standard EAV Data Sources</a>. It will limit the items returned to a <em>page</em> containing just a few items, and will also provide a <em>paging-information</em> so that the UI knows what page it's on and how many pages remain.</p>
-<h2 id="how-to-use-with-the-visualquery">How to use with the VisualQuery</h2>
-<p>When using the  <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a>  you can just drag it into your query. This is what it usually looks like:</p>
-<img src="../../api-docs/api/dot-net/ToSic.Eav/DataSources/assets/paging-basic.png" width="100%" class="full-width">
-<p>The above example shows:</p>
-<ol>
-<li>a content-type filter limiting the items to type <em>Company</em></li>
-<li>a Paging which only passes on the first 3 companies of page 1</li>
-</ol>
-<h2 id="using-url-parameters-for-paging">Using Url Parameters for Paging</h2>
-<p>This example shows how you can use the Url Parameter to page through the results:</p>
-<img src="../../api-docs/api/dot-net/ToSic.Eav/DataSources/assets/paging-page-from-url.png" width="100%" class="full-width">
-<p>...you could also set the page size from other tokens like url or app-configuration, like this:</p>
-<img src="../../api-docs/api/dot-net/ToSic.Eav/DataSources/assets/paging-page-size-app-settings.png" width="100%" class="full-width">
-<h2 id="programming-with-the-paging-datasource">Programming With The Paging DataSource</h2>
-<blockquote>
-<p>We recommend to use the <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a> where possible,
-as it's easier to understand and is identical for C# and JavaScript.
-It's also better because it separates data-retrieval from visualization.</p>
-</blockquote>
-<h2 id="read-also">Read also</h2>
-<ul>
-<li><a class="xref" href="../../net-code/data-sources/datasource.html">DataSource</a> / <a class="xref" href="../../net-code/data-sources/datastream.html">DataStream</a></li>
-<li><a class="xref" href="../../basics/query/data-sources/index.html">List of all EAV Data Sources</a></li>
-<li><a class="xref" href="../../basics/query/index.html">Query</a> / <a class="xref" href="../../basics/query/visual-query/index.html">VisualQuery</a></li>
-</ul>
-<h2 id="demo-app-and-further-links">Demo App and further links</h2>
-<p>You should find some examples in this demo App</p>
-<ul>
-<li><a href="https://github.com/2sic/app-demo-visual-query/releases/latest">Demo App with examples for most DataSources</a></li>
-</ul>
-<h2 id="history">History</h2>
-
-<ol>
-<li>Introduced in EAV 4.x, 2sxc ?</li>
-</ol>
-<!-- note: this must be an H1 because of the automatic TOC in the code pages -->
-<h1 id="api-documentation">API Documentation</h1>
-</div>
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[PublicApi]
-[VisualQuery(NiceName = &quot;Paging&quot;, UiHint = &quot;Split data into pages and forward just one batch&quot;, Icon = &quot;auto_stories&quot;, Type = DataSourceType.Logic, NameId = &quot;4c30d275-834d-42d5-8196-12c8dbbbb6f8&quot;, NameIds = new string[] { &quot;ToSic.Eav.DataSources.Paging, ToSic.Eav.DataSources&quot; }, In = new string[] { &quot;Default*&quot; }, ConfigurationType = &quot;|Config ToSic.Eav.DataSources.Paging&quot;, HelpLink = &quot;https://go.2sxc.org/DsPaging&quot;)]
-public sealed class Paging : DataSourceBase, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[PrivateApi]
+[VisualQuery(NiceName = &quot;RecycleBin&quot;, NameId = &quot;f890bec1-dee8-4ed6-9f2e-8ad412d2f4dc&quot;, Type = DataSourceType.System, Audience = Audience.System, DataConfidentiality = DataConfidentiality.System, UiHint = &quot;RecycleBin in this application&quot;)]
+[InternalApi_DoNotUse_MayChangeWithoutNotice]
+public class RecycleBin : CustomDataSource, IDataSource, IAppIdentity, IZoneIdentity, IAppIdentityLight, ICacheKey, ICacheExpiring, ITimestamped, IHasLog, IDataSourceLinkable, IServiceWithSetup&lt;IDataSourceOptions&gt;</code></pre>
   </div>
 
 
@@ -177,7 +139,8 @@ public sealed class Paging : DataSourceBase, IDataSource, IAppIdentity, IZoneIde
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase.html">ServiceBase</a></div>
       <div><a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html">ServiceBase</a>&lt;<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a>.<a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">Dependencies</a>&gt;</div>
       <div><a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html">DataSourceBase</a></div>
-      <div><span class="xref">Paging</span></div>
+      <div><a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a></div>
+      <div><span class="xref">RecycleBin</span></div>
     </dd>
   </dl>
 
@@ -202,7 +165,10 @@ public sealed class Paging : DataSourceBase, IDataSource, IAppIdentity, IZoneIde
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Immutable">DataSourceBase.Immutable</a>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_Immutable">CustomDataSource.Immutable</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html#ToSic_Eav_DataSource_CustomDataSource_GetDefault">CustomDataSource.GetDefault()</a>
     </div>
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_AppId">DataSourceBase.AppId</a>
@@ -229,6 +195,12 @@ public sealed class Paging : DataSourceBase, IDataSource, IAppIdentity, IZoneIde
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_In">DataSourceBase.In</a>
     </div>
     <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetIn_System_String_">DataSourceBase.TryGetIn(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_TryGetOut_System_String_">DataSourceBase.TryGetOut(string)</a>
+    </div>
+    <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_Out">DataSourceBase.Out</a>
     </div>
     <div>
@@ -240,44 +212,50 @@ public sealed class Paging : DataSourceBase, IDataSource, IAppIdentity, IZoneIde
     <div>
       <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_List">DataSourceBase.List</a>
     </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Generic_IEnumerable_ToSic_Eav_Data_IEntity___System_String_">DataSourceBase.ProvideOut(Func&lt;IEnumerable&lt;IEntity&gt;&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Eav.DataSource.DataSourceBase.html#ToSic_Eav_DataSource_DataSourceBase_ProvideOut_System_Func_System_Collections_Immutable_IImmutableList_ToSic_Eav_Data_IEntity___System_String_">DataSourceBase.ProvideOut(Func&lt;IImmutableList&lt;IEntity&gt;&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceBase-1.html#ToSic_Sys_Services_ServiceBase_1_Services">ServiceBase&lt;DataSourceBase.Dependencies&gt;.Services</a>
+    </div>
+    <div>
+      <a class="xref" href="ToSic.Sys.Services.ServiceBase.html#ToSic_Sys_Services_ServiceBase_ConnectLogs_System_Object___">ServiceBase.ConnectLogs(object[])</a>
+    </div>
   </dd></dl>
 
 
 
 
-  <h2 id="ToSic_Eav_DataSources_Paging_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Had a major, breaking update in v15.
-Consult the guide to upgrade your custom data sources.</p>
-</div>
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="constructors">Constructors
 </h2>
 
 
-  <a id="ToSic_Eav_DataSources_Paging_PageNumber_" data-uid="ToSic.Eav.DataSources.Paging.PageNumber*"></a>
+  <a id="ToSic_Eav_DataSources_RecycleBin__ctor_" data-uid="ToSic.Eav.DataSources.RecycleBin.#ctor*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Paging_PageNumber" data-uid="ToSic.Eav.DataSources.Paging.PageNumber">
-  PageNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Reorganize/Paging.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Eav_DataSources_RecycleBin__ctor_ToSic_Eav_DataSource_CustomDataSource_Dependencies_ToSic_Eav_Apps_Sys_Work_AppWorkQuick_ToSic_Eav_Apps_Sys_Work_WorkEntityRecycleBin__ToSic_Eav_DataSources_Sys_FeaturesForDataSources_" data-uid="ToSic.Eav.DataSources.RecycleBin.#ctor(ToSic.Eav.DataSource.CustomDataSource.Dependencies,ToSic.Eav.Apps.Sys.Work.AppWorkQuick{ToSic.Eav.Apps.Sys.Work.WorkEntityRecycleBin},ToSic.Eav.DataSources.Sys.FeaturesForDataSources)">
+  RecycleBin(Dependencies, AppWorkQuick&lt;WorkEntityRecycleBin&gt;, FeaturesForDataSources)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Work/DataSources/RecycleBin.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The Page number to show - defaults to 1</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = 1)]
-public int PageNumber { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public RecycleBin(CustomDataSource.Dependencies services, AppWorkQuick&lt;WorkEntityRecycleBin&gt; recycleBin, FeaturesForDataSources featuresForDs)</code></pre>
   </div>
 
-
-
-
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>services</code> <a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">CustomDataSource</a>.<a class="xref" href="ToSic.Eav.DataSource.CustomDataSource.html">Dependencies</a></dt>
+    <dd></dd>
+    <dt><code>recycleBin</code> <span class="xref">AppWorkQuick</span>&lt;<span class="xref">WorkEntityRecycleBin</span>&gt;</dt>
+    <dd></dd>
+    <dt><code>featuresForDs</code> <span class="xref">FeaturesForDataSources</span></dt>
     <dd></dd>
   </dl>
 
@@ -288,20 +266,27 @@ public int PageNumber { get; set; }</code></pre>
 
 
 
-  <a id="ToSic_Eav_DataSources_Paging_PageSize_" data-uid="ToSic.Eav.DataSources.Paging.PageSize*"></a>
 
-  <h3 id="ToSic_Eav_DataSources_Paging_PageSize" data-uid="ToSic.Eav.DataSources.Paging.PageSize">
-  PageSize
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Reorganize/Paging.cs/#L33"><i class="bi bi-code-slash"></i></a>
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ToSic_Eav_DataSources_RecycleBin_ContentType_" data-uid="ToSic.Eav.DataSources.RecycleBin.ContentType*"></a>
+
+  <h3 id="ToSic_Eav_DataSources_RecycleBin_ContentType" data-uid="ToSic.Eav.DataSources.RecycleBin.ContentType">
+  ContentType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Work/DataSources/RecycleBin.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The Page size in the paging. Defaults to 10.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Configuration(Fallback = 10)]
-public int PageSize { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Configuration]
+public string? ContentType { get; }</code></pre>
   </div>
 
 
@@ -310,7 +295,71 @@ public int PageSize { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ToSic_Eav_DataSources_RecycleBin_DateFrom_" data-uid="ToSic.Eav.DataSources.RecycleBin.DateFrom*"></a>
+
+  <h3 id="ToSic_Eav_DataSources_RecycleBin_DateFrom" data-uid="ToSic.Eav.DataSources.RecycleBin.DateFrom">
+  DateFrom
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Work/DataSources/RecycleBin.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Configuration]
+public DateTime? DateFrom { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ToSic_Eav_DataSources_RecycleBin_DateTo_" data-uid="ToSic.Eav.DataSources.RecycleBin.DateTo*"></a>
+
+  <h3 id="ToSic_Eav_DataSources_RecycleBin_DateTo" data-uid="ToSic.Eav.DataSources.RecycleBin.DateTo">
+  DateTo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Work/DataSources/RecycleBin.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Configuration]
+public DateTime? DateTo { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
     <dd></dd>
   </dl>
 
@@ -325,7 +374,7 @@ public int PageSize { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.DataSources/DataSources/Reorganize/Paging.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Eav.Work/DataSources/RecycleBin.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 
