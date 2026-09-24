@@ -2,59 +2,67 @@
 uid: JsCode.Angular.IntegrateAngularDevelopment
 ---
 
-<img src="./assets/dnn-sxc-angular-banner-flat.jpg" width="100%">
+<img src="./assets/sxc-angular-banner-flat.jpg" width="100%">
 
-# Integrate Angular for Runtime in 2sxc / Dnn
+# Develop an Angular App inside 2sxc and Dnn
 
 [!include[](~/pages/basics/stack/_shared-float-summary.md)]
 <style>.context-box-summary .spa-all { visibility: visible; } </style>
 
-This explains how to best integrate Angular development in Dnn so you can enjoy hot-reloading while developing, and still use Dnn/2sxc Endpoints at the same time. Note that you can find a working demo of this in the [Template Angular App](xref:JsCode.Angular.TemplateApp).
+Use the [Angular Loader extension](xref:Extensions.AppExtensions.By2sxc.AngularLoader.Index) with its `local` edition to develop an Angular app with hot reload inside a real Dnn page. This preserves Dnn authentication, the current 2sxc module context, WebAPI access, and edit toolbars while Angular code is served from your development machine.
 
-## Goals of the Runtime Integration
+## Prepare the App
 
-1. The Angular App can be developed using best-practices incl. partial loading and hashed files
-1. We can see the dev-build in Dnn in real-time
-1. The dev-build can access Dnn endpoints as if it were running in production
-1. Hot-reload works, so saving files automatically reloads the Dnn page
+1. [Install the Angular Loader extension](xref:Extensions.AppExtensions.Install.Index) in the 2sxc app.
+1. Follow its [local-edition instructions](xref:Extensions.AppExtensions.By2sxc.AngularLoader.Index) to configure the local development server and generated files.
+1. Configure [sxc-angular](xref:JsCode.Angular.DnnSxcAngular.Install) in the Angular application.
 
-## Implementation
+The [Angular Template App](xref:JsCode.Angular.TemplateApp) already contains this setup and is the recommended starting point.
 
-The Template App is installed in Dnn and we have the full copy of it on our local dev environment. Dev-server will run on `localhost:4200`. The way it's integrated in the template app is that the main file `_AngularApp.cshtml` has some code like this:
+## Start Local Development
 
-```razor
-@inherits Custom.Hybrid.Razor12
-@using ToSic.Razor.Blade;
-@{
-  // ...
+From the template app's `ng` folder, install the dependencies and start Angular:
 
-  // Add <base> tag using RazorBlade - Angular needs this so that links changing dialogs (routes) work properly
-  HtmlPage.AddBase((Link.Base()));
-
-  // ...
-
-  // Create helper to integrate angular best-practice
-  var ngHelpers = CreateInstance("./shared/_Angular.cshtml");
-
-  // ...
-  @ngHelpers.LoadFromNgServe()
-  // ...
-}
-
+```cmd
+npm install
+npm run local
 ```
 
-We've removed some of the code here for simplicity, but the important parts are
+The template starts the Angular development server on `localhost:4200`.
 
-1. Add `<base>` header to the page for Angular Routing to work properly
-1. `LoadFromNgServe` will load the standard Angular files from `localhost:4200`
+Open the normal Dnn page containing the 2sxc app, then select the `local` edition using the app's edition selector. Do not open `localhost:4200` directly—the Dnn page supplies the authentication and 2sxc context.
 
-To see the full source code, get the [](xref:App.AngularTemplate) or browse it here [](xref:App.AngularTemplate.Git)
+If the Dnn site uses HTTPS, start the HTTPS development server instead:
 
----
+```cmd
+npm run local-ssl
+```
 
-## History
+Your browser may require you to trust the local development certificate before it can load the scripts.
 
-1. First [version for Angular 4](https://github.com/2sic/app-tutorial-angular4-data) created in 2017
-1. Enhanced for [Angular 6](https://github.com/2sic/app-template-angular) in 2019
-1. Enhanced for Angular 8 in 2020
-1. Enhanced for Angular 11 and dnn-sxc-angular 11 in February 2021
+## How Requests Reach 2sxc
+
+The Angular Loader renders the Angular root element inside the Dnn page. During Angular bootstrap, `SxcInitializer.initialize(element)` reads that element's 2sxc context. The interceptor registered by `provideSxc()` then sends data, query, and WebAPI requests to the Dnn/2sxc site with the required headers.
+
+## Build an Edition
+
+The current template provides scripts for deploying production builds into the app's edition folders:
+
+```cmd
+npm run build-to-staging
+npm run build-to-live
+```
+
+Use staging for review before publishing the same app as the live edition.
+
+## Network Shares and Watchpack Errors
+
+Native file watching may fail when the Angular workspace is located on a mapped or UNC network drive. If Watchpack repeatedly reports `UNKNOWN: unknown error, watch`, run Angular with polling:
+
+```cmd
+npm run local -- --poll=1000
+```
+
+You can also add `--poll=1000` to the template's `local` npm script if this workspace always requires polling.
+
+For loader configuration and edition switching, follow the [Angular Loader documentation](xref:Extensions.AppExtensions.By2sxc.AngularLoader.Index). For the complete implementation, browse the [Angular Template App source](xref:App.AngularTemplate.Git).

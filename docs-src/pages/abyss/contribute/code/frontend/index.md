@@ -40,7 +40,7 @@ It also contains some shared code and NPM packages which are used by both 2sxc a
 1. `\projects\code-editor-snippets\` - various code-snippets (as JSON) to enhance the code editor experience in 2sxc
 1. `\projects\inpage\` - the in-page edit experience, such as the toolbar
 1. `\projects\quick-dialog\` - the Angular UI which appears from the bottom, to select templates, Apps, etc.
-1. `\projects\sxc-angular\` - NPM package for using 2sxc in Angular, deployed to NPM as `@2sxc/sxc-angular`
+1. `\projects\sxc-angular\` - npm package for using 2sxc in Angular, deployed as `@2sic.com/sxc-angular`
 1. `\projects\sxc-typings\` - NPM package for TypeScript typings, deployed to NPM as `@2sxc/sxc-typings`
 1. `\turnOn\` - a copy of the `dist` of the turnOn dependency which is in a [separate repository](xref:Repo.turnOn).
 

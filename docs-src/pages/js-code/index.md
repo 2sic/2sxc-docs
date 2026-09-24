@@ -42,6 +42,6 @@ It's ideal both for simple scripts like galleries as well as for bundling and di
 
 ## Using 2sxc with Popular JS Libraries
 
-1. [Angular / dnn-sxc-angular](xref:JsCode.Angular.Index)
+1. [Angular / sxc-angular](xref:JsCode.Angular.Index)
 
 

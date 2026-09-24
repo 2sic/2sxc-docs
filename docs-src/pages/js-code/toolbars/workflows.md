@@ -89,7 +89,7 @@ This is especially important if you have entities within entities, in which case
 
 ## Angular Implementation
 
-In `dnn-sxc-angular` there is a directive for toolbars, which hides all this and just allows you to do a custom `refresh` as you need it.
+In `sxc-angular`, the standalone `SxcTagToolbarDirective` handles this integration and exposes a `refresh` event for custom data refreshes.
 See [](xref:JsCode.Angular.DnnSxcAngular.Toolbars)
 
 ## React Implementation
