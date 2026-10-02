@@ -59,26 +59,20 @@ The catalog discovers compiled DataSource types through assembly scanning and re
 
 For a simple list, define a record implementing `IRawEntityAutoConvert`.
 Add `[ContentType]` to describe its generated content type and `[ContentTypeTitle]` to identify the display title.
-For example, `ScopeModel` in `ToSic.Eav.DataSources/DataSources.Sys/ScopeModel.cs` contains:
+For example, `MetadataTargetTypeRaw` contains:
 
 ```csharp
 [ContentType(
-    Name = "Scope",
-    Guid = "f134e3c1-f09f-4fbc-85be-de43a64c6eed",
-    Description = "Data Scope",
+    Name = "MetadataTargetTypes",
+    Guid = "52c96a68-c791-439f-a154-7c46c1bfa0d9",
+    Description = "Metadata target type",
     Scope = "System"
 )]
-public record ScopeModel : IRawEntityAutoConvert
-{
-    public required string NameId { get; init; }
-
-    [ContentTypeTitle]
-    public required string Name { get; init; }
-
-    public required int TypesTotal { get; init; }
-    public required int TypesInherited { get; init; }
-    public required int TypesOfApp { get; init; }
-}
+internal sealed record MetadataTargetTypeRaw(
+    int Id,
+    [property: ContentTypeTitle] string Title,
+    string NameId
+) : IRawEntityAutoConvert;
 ```
 
 This is an existing model, use your own name and GUID when creating another one.
@@ -87,38 +81,24 @@ The conversion creates entities for the query pipeline, it does not save these r
 Use `ProvideOutRaw` for these models so the DataFactory performs the conversion to `IEntity`.
 `IRawEntityAutoConvert` handles automatic property conversion.
 
-Check conversion options when the UI requires more than simple scalar fields:
-
-- `AllowUnknownValueTypes = true` allows values such as nested DTOs to pass through conversion. Use it deliberately and check the resulting JSON.
-
-`AppLanguages` and its `LanguageStatusRaw` model are useful examples of a source with nested permission information.
+See [](xref:Abyss.Contribute.Code.Backend.DataSourceForUi.RawData) for all supported raw shapes, conversion behavior, factory options, relationships, and links to real implementations.
 
 ## Register Lazy Output Streams
 
 Register callbacks in the constructor, and load data inside those callbacks.
 The catalog can construct a source just to inspect its stream names, before it has the app configuration needed to load data.
 
-For example, `AppLanguages` registers its default output like this:
+For example, `MetadataTargetTypes` registers its default output like this:
 
 ```csharp
-public AppLanguages(
-    Dependencies services,
-    LanguagesBackend languagesBackend,
-    LazySvc<IAppReaderFactory> appReadersLazy)
-    : base(services, logName: "Sxc.AppLangs",
-        connect: [languagesBackend, appReadersLazy])
+public MetadataTargetTypes(Dependencies services)
+    : base(services, logName: "Ds.MetaTg")
 {
-    ProvideOutRaw(
-        () => GetLanguages(languagesBackend, appReadersLazy),
-        options: () => new()
-        {
-            AutoId = true,
-            AllowUnknownValueTypes = true,
-        });
+    ProvideOutRaw(GetList);
 }
 ```
 
-`GetLanguages` obtains the app reader using `AppId`, delegates to `LanguagesBackend`, and returns a list of `LanguageStatusRaw` records.
+`GetList` is only called when the stream is evaluated and returns `MetadataTargetTypeRaw` records.
 
 Without a `name`, `ProvideOutRaw` registers `Default`.
 For multiple result sets, register a callback for each named stream.
