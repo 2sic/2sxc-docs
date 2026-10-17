@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Epic: Auto-Generate App Data Models | 2sxc 22 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Epic: Auto-Generate App Data Models | 2sxc 22 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/releases/epics/auto-generate-app-data-models.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Releases.Epics.AutoGenerateAppDataModels">
+<h1 id="epic-auto-generate-app-data-models">Epic: Auto-Generate App Data Models</h1>
+
+<p>Entity schemas can be used to generate models in the App code.
+Now we want to do this automatically, as the schema changes.</p>
+<p>But it's important that the developer actively chose to do this,
+because some changes (such as removing or renaming fields) can result in broken code.</p>
+<h2 id="-status-overview--wip---updated-2026-10-17">📈 Status Overview ⌛ WIP - Updated: 2026-10-17</h2>
+<ul>
+<li>Implementation: ca. 70%</li>
+<li>Documentation: ca. 50% (just this document)</li>
+<li>Next Priorities:
+<ol>
+<li>Finish all relevant triggers</li>
+<li>Optimize performance for asynchronous handling</li>
+</ol>
+</li>
+</ul>
+<h2 id="motivation">Motivation</h2>
+<p>Faster development, better IntelliSense and better AI coding support.</p>
+<h2 id="features-needed">Features Needed</h2>
+<h3 id="code-generation--done">Code Generation (✅ done)</h3>
+<p>📈 Status: ✅ Done</p>
+<h3 id="configuration-for-auto-generation-done">Configuration for Auto-Generation (✅done)</h3>
+<p>📈 Status: ✅ Done</p>
+<h3 id="triggers-on-all-relevant-schema-changes-wip">Triggers on all relevant schema changes (WIP)</h3>
+<p>TODO: document / verify which of these triggers already correctly work</p>
+<ol>
+<li>Trigger on Content-Type changes
+<ol>
+<li>Create content-type</li>
+<li>Rename content-type</li>
+<li>Update content-type (description)</li>
+<li><del>Delete</del> (not relevant, as we don't remove code)</li>
+</ol>
+</li>
+<li>Trigger on Field changes
+<ol>
+<li>Create field</li>
+<li>Add existing field definition (shared)</li>
+<li>Rename field</li>
+<li><del>Reorder fields</del> (should not be relevant)</li>
+<li>Update field (name, type, validations)</li>
+<li>Delete</li>
+</ol>
+</li>
+<li>Trigger on Field details changes (such as entity-relationships, default values etc.)
+<ol>
+<li>Detect if a stored entity has changes that affect the generated code (field-definitions, source-definitions)</li>
+<li>Trigger changes in these scenarios</li>
+</ol>
+</li>
+</ol>
+<p>📈 Status: ✅ TODO, but API may still need to mature before widespread use.</p>
+<h3 id="planned-improvements">Planned Improvements</h3>
+<p>As of now, the system feels a bit sluggish, because the code runs synchronously every time a relevant schema change is detected.
+Optimizing this process or introducing asynchronous handling could improve performance.
+This may be a bit tricky, as async processing could break because the dependency-provider may be deleted during async execution.</p>
+<h2 id="related-features">Related Features</h2>
+<ol>
+<li>Code Generation of <code>ITyped</code> data classes (✅ done)</li>
+<li>Code Generation of clean Models (✅ done)</li>
+<li>Model conversion system (entity --&gt; model) (✅ done)</li>
+</ol>
+<h2 id="history">History</h2>
+<ol>
+<li>2026-03 started for v21.14</li>
+<li>2026-09 released first version v22.00</li>
+<li>2026-10-17 created these docs</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/releases/epics/auto-generate-app-data-models.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -11,9 +11,8 @@ which when stored will not result in an entity in the DB.
 
 ## 📈 Status Overview ⏸️ - Updated: 2026-10-17
 
-* Started: 2025-07 for v20.00.03
-* Implementation Completeness: ca. 20%
-* Docs Completeness: ca. 10% (just this document)
+* Implementation: ca. 20%
+* Documentation: ca. 10% (just this document)
 * Next Priorities: ⏸️ paused / wait
 
 ## Motivation

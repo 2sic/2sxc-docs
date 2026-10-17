@@ -13,7 +13,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 
 Last Update: **2026-10-17**
 
-## Priority 2026 All Year
+## Priority 2026 All Year (v22/v23)
 
 > [!TIP]
 > The main priority is to finalize a lot of things which are already done,
@@ -25,33 +25,25 @@ Main Priorities:
 1. ✅ Linux and container support for Oqtane
 1. DataSources which easily convert data to entities (raw data --> entity)
 1. Models System and conversion (entity --> model)
-1. Push away from all old dynamic code; this also means removing it in docs / tutorials
+1. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
 1. ⌛ Reduce exotic technical implementations (like standardize logging to use Microsoft.Extensions.Logging)
 1. ⌛ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
-1. ⌛ Code Generation (Typed, Models, Automated) and ✅ IntelliSense improvements
+1. ⌛ [Automatic Code Generation](xref:Abyss.Releases.Epics.AutoGenerateAppDataModels) (Typed, Models, Automated) and ✅ IntelliSense improvements
 1. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
+1. Reduce [technical debt](xref:Abyss.Releases.Planned.TechnicalDebt)
 
-Note: TODO: Separate docs
-
-### Technical Debt to prioritize
-
-1. Logging
-1. Dependency Injection of exotic context information
-
-
-### Resources 2026 Q1
+### Resources 2026
 
 * @2dm: (iJungleboy) ca. 20%; ca. 8h/wk incl. PM work
 * @2rb: (Raoul) ca. 40%; ca. 20h/wk (actually 100%, but only junior)
 * @STV: (Tonci) ca. 75%; ca. 32h/wk
 * @2ro: (Roman) ca. 10%; ca. 8h/wk
 
-#### Awaiting Release / almost DoD
-
 
 ### To Be Released in v22
 
 1. @STV: Code Copilot: Auto-Generate models as they change - ca. 75% ⏳
+1. @STV: Logging move to Microsoft.Extensions.Logging - ca. 70% ⏳
 
 ### Things to Finalize and Document / Blog / Tutorial
 
@@ -73,8 +65,7 @@ Note: TODO: Separate docs
     1. put properties in tables
     1. put extension methods below
     1. put inherited properties below, but also in tables
-1. Make the DNN project nullable
-1. Make the Oqtane project nullable
+1. Try to drop the Angular Zone on quick-dialog
 
 ## Major things we're working on
 
@@ -128,7 +119,6 @@ Note: TODO: Separate docs
 1. Extension points - for example on data-save - to allow custom validation, security-checks, modifications or search-integrations.
 1. Generic WYSIWYG integration, to allow other editors than TinyMCE
 1. Try to drop the Angular Zone on eav-ui
-1. Try to drop the Angular Zone on quick-dialog
 
 
 ---

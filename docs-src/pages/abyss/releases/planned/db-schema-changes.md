@@ -2,7 +2,7 @@
 uid: Abyss.Releases.Planned.DbSchema
 ---
 
-# Planned DB Schema Changes 2026
+# Planned DB Schema Changes
 
 This page collects planned changes to the DB Schema, so that we'll be able to implement them all in one go when we do it.
 
