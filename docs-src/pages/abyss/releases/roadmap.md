@@ -11,13 +11,33 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2026-08-04**
+Last Update: **2026-10-17**
 
 ## Priority 2026 All Year
 
 > [!TIP]
 > The main priority is to finalize a lot of things which are already done,
 > but often not fully documented or waiting for final tweaks.
+
+Main Priorities:
+
+1. ✅ App Extensions system and many app extensions
+1. ✅ Linux and container support for Oqtane
+1. DataSources which easily convert data to entities (raw data --> entity)
+1. Models System and conversion (entity --> model)
+1. Push away from all old dynamic code; this also means removing it in docs / tutorials
+1. ⌛ Reduce exotic technical implementations (like standardize logging to use Microsoft.Extensions.Logging)
+1. ⌛ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
+1. ⌛ Code Generation (Typed, Models, Automated) and ✅ IntelliSense improvements
+1. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
+
+Note: TODO: Separate docs
+
+### Technical Debt to prioritize
+
+1. Logging
+1. Dependency Injection of exotic context information
+
 
 ### Resources 2026 Q1
 
@@ -31,28 +51,14 @@ Last Update: **2026-08-04**
 
 ### To Be Released in v22
 
-1. @2dm: Generic Model Factory System for converting entities to typed models
-    1. with a few public models to use
-    1. with some kind of list to see them all
-1. @STV: Oqtane: Multi-Tenant implementation (started) - ca. 5d ⏳
-1. @STV: Code Copilot: Auto-Generate models as they change - ca. 70% ⏳
-1. @2rb: Angular Update on Quick-Dialog
-1. @STV / @2rb: Ability to see where entities are being used / relationships - ca. 3d
-
-
-1. @2ro: Change all build pipelines to use vite
-1. @2ro: change all builds to use Typescript 7
-1. @2ro: change all builds to use eslint (many still have TSLint)
+1. @STV: Code Copilot: Auto-Generate models as they change - ca. 75% ⏳
 
 ### Things to Finalize and Document / Blog / Tutorial
 
-1. @2dm: 2sxc docs for VS Code / intellisense (most are missing ATM because of DLL reorgs) - ca. 1d / v22
 1. @2dm: and others - lots of small bugfixes which have been accumulating over time - ca. 3-5d
-1. @2rb: vCard extension - ca. 1d 50%
 
 ### Things to Implement
 
-1. @2dm: Really promote the extension system - ca. 5d
 1. @2ro: Finish extensions for React & create sample app with React
 
 ### Things for Juniors to Work On
@@ -86,22 +92,6 @@ Last Update: **2026-08-04**
 1. Picker Source WebService (not started)
 1. Picker Source CSS (beta)
 
-
-## 2026 Q1 Finish DoD / Almost-Done Work
-
-1. Improve Intellisense
-    1. Harden more Dlls and include more XML docs
-        1. ✅/✅ ToSic.Sxc
-        1. ✅/🔳 ToSic.Sxc.Code.Generate
-        1. ✅/🔳 ToSic.Sxc.WebApi
-        1. 🔳/🔳 ToSic.Sxc.Dnn
-        1. 🔳/🔳 ToSic.Sxc.Dnn.Core
-        1. 🔳/🔳 ToSic.Sxc.Dnn.Razor
-        1. ✅/🔳 ToSic.Sxc.Dnn.WebApi
-        1. ✅/🔳 ToSic.Eav.Apps
-        1. ✅/🔳 ToSic.Eav.DataSources
-        1. 🔳/🔳 ToSic.Eav...other
-        1. ToSic.Sxc.Oqt / Razor
 
 ## Done but not communicated, or still tweaking / WIP
 
@@ -192,6 +182,7 @@ Minor: Tutorial App Enhancements
 
 2sxc
 
+1. ✅ Module level settings and Metadata
 1. Page Level Settings and Metadata
 1. User Help / Manual in-page
 1. Plan new Metadata Target/Address system using only a string
@@ -210,9 +201,7 @@ Minor: Tutorial App Enhancements
     1. Notes everywhere - especially on the page - ca. 2d
 1. Massively improve JSON import with language checks, overwrite/vs new etc.
 1. Code editor intellisense for most APIs - ca. 3-4d
-1. ~~⚠️ Deprecation System (show in UI, mark all APIs clearly, blog) - ca. 2d~~
 1. Many automated tests in the core JS APIs (toolbar, etc.) - ca. 5d - SDV
-1. ~~JS Docs for formula~~
 
 Blazor CMS / cre8magic
 
@@ -288,7 +277,6 @@ Apps / App Maintenance
 
 ## Future / Other
 
-1. [Update DB-Schema](xref:Abyss.Releases.Planned.DbSchema)
 1. Support for persisting data to the file-system instead of DB
 1. Blazor integration for use in client-side Blazor  
     ATM not really usefuly, because blazor is not run-time compiled yet, so development would be super difficult
