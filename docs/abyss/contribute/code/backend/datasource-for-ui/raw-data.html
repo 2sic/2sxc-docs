@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Raw Data Returned by DataSources | 2sxc 22 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Raw Data Returned by DataSources | 2sxc 22 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/datasource-for-ui/raw-data.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Code.Backend.DataSourceForUi.RawData">
+<h1 id="raw-data-returned-by-datasources">Raw Data Returned by DataSources</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+
+<p>Most DataSources should return simple <strong>raw objects</strong>.
+2sxc then converts these objects into entities for the query and the UI.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>In most cases, create a small record which implements <code>IRawEntityAutoConvert</code>.</p>
+</div>
+<p>The APIs on this page were introduced as work-in-progress APIs for v22.
+The correct interface name is <code>IRawEntityAutoConvert</code>, not <code>IRawAutoConvert</code>.</p>
+<h2 id="the-normal-way-irawentityautoconvert">The Normal Way: <code>IRawEntityAutoConvert</code></h2>
+<p>Create a record containing the values the UI needs:</p>
+<pre><code class="lang-csharp">using ToSic.Eav.Data.ContentTypes;
+using ToSic.Eav.Data.Raw;
+
+[ContentType(
+    Name = &quot;MetadataTargetTypes&quot;,
+    Guid = &quot;52c96a68-c791-439f-a154-7c46c1bfa0d9&quot;,
+    Description = &quot;Metadata target type&quot;,
+    Scope = &quot;System&quot;
+)]
+internal sealed record MetadataTargetTypeRaw(
+    int Id,
+    [property: ContentTypeTitle] string Title,
+    string NameId
+) : IRawEntityAutoConvert;
+</code></pre>
+<p>Then return these records from the DataSource:</p>
+<pre><code class="lang-csharp">public MetadataTargetTypes(Dependencies services)
+    : base(services, logName: &quot;Ds.MetaTg&quot;)
+{
+    ProvideOutRaw(GetList);
+}
+
+private IEnumerable&lt;MetadataTargetTypeRaw&gt; GetList() =&gt;
+    service.GetItems()
+        .Select(item =&gt; new MetadataTargetTypeRaw(
+            Id: item.Id,
+            Title: item.Title,
+            NameId: item.NameId
+        ));
+</code></pre>
+<p>That is all that is needed in the common case.</p>
+<h2 id="what-happens-during-conversion">What Happens During Conversion</h2>
+<p>When the stream is requested:</p>
+<ol>
+<li><code>GetList()</code> loads the raw records.</li>
+<li><code>ProvideOutRaw(...)</code> passes them to the data factory.</li>
+<li>Public properties such as <code>Title</code> and <code>NameId</code> become entity fields.</li>
+<li>The resulting entities are returned through the query API.</li>
+</ol>
+<p>The entities are temporary query results.
+They are not saved as app content.</p>
+<p>Some property names have a special meaning:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>Used as the entity ID</td>
+</tr>
+<tr>
+<td><code>Guid</code></td>
+<td>Used as the entity GUID</td>
+</tr>
+<tr>
+<td><code>Created</code></td>
+<td>Used as the creation date</td>
+</tr>
+<tr>
+<td><code>Modified</code></td>
+<td>Used as the modification date</td>
+</tr>
+</tbody>
+</table>
+<p>These properties do not appear again as normal fields.
+If no ID is supplied, the factory normally creates one automatically.</p>
+<h2 id="creating-a-good-raw-model">Creating a Good Raw Model</h2>
+<p>Use these simple rules:</p>
+<ol>
+<li>Prefer an <code>internal sealed record</code>.</li>
+<li>Implement <code>IRawEntityAutoConvert</code>.</li>
+<li>Add <code>[ContentType]</code> with a new, stable GUID.</li>
+<li>Mark the main display property with <code>[ContentTypeTitle]</code>.</li>
+<li>Only add properties that should be returned to the UI.</li>
+<li>Only provide an ID or GUID when the source has a meaningful one.</li>
+</ol>
+<p>For positional records, use <code>[property: ContentTypeTitle]</code> as shown above.</p>
+<p>Keep the values simple: strings, numbers, booleans, dates, and similar scalar values.
+Nested objects are not converted recursively.</p>
+<p>If a nested object must be included in the JSON, allow it explicitly and test the resulting response:</p>
+<pre><code class="lang-csharp">ProvideOutRaw(
+    GetList,
+    options: () =&gt; new()
+    {
+        AllowUnknownValueTypes = true,
+    });
+</code></pre>
+<h2 id="other-ways-to-return-raw-data">Other Ways to Return Raw Data</h2>
+<p>There are three less common alternatives.</p>
+<h3 id="new-rawentity"><code>new RawEntity()</code></h3>
+<p>Use <code>RawEntity</code> when the field names are dynamic or the values are already in a dictionary:</p>
+<pre><code class="lang-csharp">new RawEntity
+{
+    Id = app.Id,
+    Values = new Dictionary&lt;string, object?&gt;
+    {
+        [&quot;Name&quot;] = app.Name,
+        [&quot;Folder&quot;] = app.Folder,
+        [&quot;IsHidden&quot;] = app.IsHidden,
+    },
+};
+</code></pre>
+<p>In this case, the DataSource often supplies the type and title names:</p>
+<pre><code class="lang-csharp">ProvideOutRaw(
+    GetApps,
+    options: () =&gt; new()
+    {
+        TypeName = &quot;App&quot;,
+        TitleField = &quot;Name&quot;,
+    });
+</code></pre>
+<h3 id="a-custom-irawentity">A Custom <code>IRawEntity</code></h3>
+<p>You can create your own class implementing <code>IRawEntity</code>.
+It must provide <code>Id</code>, <code>Guid</code>, <code>Created</code>, <code>Modified</code>, and a <code>Values</code> dictionary.</p>
+<p>This is rarely necessary because <code>RawEntity</code> already implements it.</p>
+<h3 id="irawentityconvertible"><code>IRawEntityConvertible</code></h3>
+<p>Use <code>IRawEntityConvertible</code> when conversion needs custom logic, for example:</p>
+<ul>
+<li>removing or renaming fields;</li>
+<li>only adding an expensive value when requested;</li>
+<li>creating relationships between returned entities;</li>
+<li>performing a highly optimized conversion.</li>
+</ul>
+<p>Its <code>GetConverter()</code> method returns a converter which creates a <code>RawEntity</code>.
+Keep this method as an explicit interface implementation so it does not appear in the serialized model.</p>
+<p>See <code>AppStackDataRaw</code> and <code>UserModelRaw</code> in the examples below.</p>
+<h2 id="which-type-should-i-choose">Which Type Should I Choose?</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal typed record</td>
+<td><code>IRawEntityAutoConvert</code></td>
+</tr>
+<tr>
+<td>Dynamic dictionary of fields</td>
+<td><code>new RawEntity()</code></td>
+</tr>
+<tr>
+<td>Reusable custom raw container</td>
+<td><code>IRawEntity</code></td>
+</tr>
+<tr>
+<td>Special conversion logic or relationships</td>
+<td><code>IRawEntityConvertible</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>IRawData</code> is only the shared marker interface.
+Do not implement only <code>IRawData</code>, because it does not explain how the object should be converted.</p>
+<h2 id="output-streams">Output Streams</h2>
+<p><code>ProvideOutRaw(GetList)</code> creates the default stream.
+Use <code>name</code> for additional streams:</p>
+<pre><code class="lang-csharp">ProvideOutRaw(GetItems);
+ProvideOutRaw(GetWarnings, name: &quot;Warnings&quot;);
+</code></pre>
+<p>The callback remains lazy: <code>GetItems()</code> is called when the stream is requested, not while the DataSource is constructed.</p>
+<p>A very simple DataSource can instead override its default output:</p>
+<pre><code class="lang-csharp">protected override IEnumerable&lt;IRawData&gt; GetDefault() =&gt; service.GetItems();
+</code></pre>
+<h2 id="real-examples">Real Examples</h2>
+<table>
+<thead>
+<tr>
+<th>What to see</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recommended auto-converted record</td>
+<td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DataSources.Sys/MetadataTargetTypeRaw.cs"><code>MetadataTargetTypeRaw</code></a> and <a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DataSources.Sys/MetadataTargetTypes.cs"><code>MetadataTargetTypes</code></a></td>
+</tr>
+<tr>
+<td>Auto-converted language records</td>
+<td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.Context/Context/Sys/Languages/AppLanguageState.cs"><code>AppLanguageState</code></a> and <a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DataSources.Sys/AppLanguages.cs"><code>AppLanguages</code></a></td>
+</tr>
+<tr>
+<td>Multiple named streams</td>
+<td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.WebApi/WebApi.Sys/Admin/SystemInfo.cs"><code>SystemInfo</code></a></td>
+</tr>
+<tr>
+<td>Direct <code>new RawEntity()</code></td>
+<td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DataSources.Sys/Apps.cs"><code>Apps</code></a> and <a href="https://github.com/2sic/2sxc/blob/master/Src/Sxc/ToSic.Sxc.Code.Generate/DataSources/CodeGenerators.cs"><code>CodeGenerators</code></a></td>
+</tr>
+<tr>
+<td>Custom conversion</td>
+<td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DataSources.Sys/Stack/AppStackDataRaw.cs"><code>AppStackDataRaw</code></a></td>
+</tr>
+<tr>
+<td>Custom conversion with relationships</td>
+<td><a href="https://github.com/2sic/2sxc/blob/master/Src/Sxc/ToSic.Sxc.Cms/Cms/Users/Sys/UserModelRaw.cs"><code>UserModelRaw</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>The core raw-conversion code is in <code>eav-server/ToSic.Eav.Data.Build/Data.Raw/</code>.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>Documented raw DataSource return conventions 2026-10-02</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/datasource-for-ui/raw-data.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

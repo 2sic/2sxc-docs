@@ -175,55 +175,35 @@ The attribute supplies both its lookup names and its access classification, even
 <h2 id="define-the-output-model">Define the Output Model</h2>
 <p>For a simple list, define a record implementing <code>IRawEntityAutoConvert</code>.
 Add <code>[ContentType]</code> to describe its generated content type and <code>[ContentTypeTitle]</code> to identify the display title.
-For example, <code>ScopeModel</code> in <code>ToSic.Eav.DataSources/DataSources.Sys/ScopeModel.cs</code> contains:</p>
+For example, <code>MetadataTargetTypeRaw</code> contains:</p>
 <pre><code class="lang-csharp">[ContentType(
-    Name = &quot;Scope&quot;,
-    Guid = &quot;f134e3c1-f09f-4fbc-85be-de43a64c6eed&quot;,
-    Description = &quot;Data Scope&quot;,
+    Name = &quot;MetadataTargetTypes&quot;,
+    Guid = &quot;52c96a68-c791-439f-a154-7c46c1bfa0d9&quot;,
+    Description = &quot;Metadata target type&quot;,
     Scope = &quot;System&quot;
 )]
-public record ScopeModel : IRawEntityAutoConvert
-{
-    public required string NameId { get; init; }
-
-    [ContentTypeTitle]
-    public required string Name { get; init; }
-
-    public required int TypesTotal { get; init; }
-    public required int TypesInherited { get; init; }
-    public required int TypesOfApp { get; init; }
-}
+internal sealed record MetadataTargetTypeRaw(
+    int Id,
+    [property: ContentTypeTitle] string Title,
+    string NameId
+) : IRawEntityAutoConvert;
 </code></pre>
 <p>This is an existing model, use your own name and GUID when creating another one.
 The conversion creates entities for the query pipeline, it does not save these rows as app content.</p>
 <p>Use <code>ProvideOutRaw</code> for these models so the DataFactory performs the conversion to <code>IEntity</code>.
 <code>IRawEntityAutoConvert</code> handles automatic property conversion.</p>
-<p>Check conversion options when the UI requires more than simple scalar fields:</p>
-<ul>
-<li><code>AllowUnknownValueTypes = true</code> allows values such as nested DTOs to pass through conversion. Use it deliberately and check the resulting JSON.</li>
-</ul>
-<p><code>AppLanguages</code> and its <code>LanguageStatusRaw</code> model are useful examples of a source with nested permission information.</p>
+<p>See <a class="xref" href="datasource-for-ui/raw-data.html">Raw Data Returned by DataSources</a> for all supported raw shapes, conversion behavior, factory options, relationships, and links to real implementations.</p>
 <h2 id="register-lazy-output-streams">Register Lazy Output Streams</h2>
 <p>Register callbacks in the constructor, and load data inside those callbacks.
 The catalog can construct a source just to inspect its stream names, before it has the app configuration needed to load data.</p>
-<p>For example, <code>AppLanguages</code> registers its default output like this:</p>
-<pre><code class="lang-csharp">public AppLanguages(
-    Dependencies services,
-    LanguagesBackend languagesBackend,
-    LazySvc&lt;IAppReaderFactory&gt; appReadersLazy)
-    : base(services, logName: &quot;Sxc.AppLangs&quot;,
-        connect: [languagesBackend, appReadersLazy])
+<p>For example, <code>MetadataTargetTypes</code> registers its default output like this:</p>
+<pre><code class="lang-csharp">public MetadataTargetTypes(Dependencies services)
+    : base(services, logName: &quot;Ds.MetaTg&quot;)
 {
-    ProvideOutRaw(
-        () =&gt; GetLanguages(languagesBackend, appReadersLazy),
-        options: () =&gt; new()
-        {
-            AutoId = true,
-            AllowUnknownValueTypes = true,
-        });
+    ProvideOutRaw(GetList);
 }
 </code></pre>
-<p><code>GetLanguages</code> obtains the app reader using <code>AppId</code>, delegates to <code>LanguagesBackend</code>, and returns a list of <code>LanguageStatusRaw</code> records.</p>
+<p><code>GetList</code> is only called when the stream is evaluated and returns <code>MetadataTargetTypeRaw</code> records.</p>
 <p>Without a <code>name</code>, <code>ProvideOutRaw</code> registers <code>Default</code>.
 For multiple result sets, register a callback for each named stream.</p>
 <h2 id="read-request-parameters">Read Request Parameters</h2>
