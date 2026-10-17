@@ -1,5 +1,5 @@
 ---
-uid: Abyss.Lightspeed.Index
+uid: Abyss.LightSpeed.Index
 ---
 
 <img src="~/assets/features/lightspeed.svg" class="feature">

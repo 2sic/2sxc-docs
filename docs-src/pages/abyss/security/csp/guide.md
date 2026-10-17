@@ -121,7 +121,7 @@ As we're testing this, you will always need to add `?csp=dev` to the url you're 
 > This will make it much faster to try various setups.
 
 > [!TIP]
-> During development, please disable [LightSpeed Cache](xref:Abyss.Lightspeed.Index)
+> During development, please disable [LightSpeed Cache](xref:Abyss.LightSpeed.Index)
 > as it may cache some settings, making it hard to debug. 
 
 ### Strict-First Method (recommended)

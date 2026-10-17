@@ -226,7 +226,7 @@ _Note that your code must access the `SiteDynCode` somewhere so the `OfSite()` i
 
 ## LightSpeed Integration
 
-We've ensured that CSP will also work with [LightSpeed Cache](xref:Abyss.Lightspeed.Index).
+We've ensured that CSP will also work with [LightSpeed Cache](xref:Abyss.LightSpeed.Index).
 So even cached modules and Apps will still apply the CSP rules.
 
 
