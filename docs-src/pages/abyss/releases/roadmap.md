@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2026-10-17**
+Last Update: **2026-10-19**
 
 ## Priority 2026 All Year (v22/v23)
 
@@ -26,7 +26,7 @@ Main Priorities:
 1. DataSources which easily convert data to entities (raw data --> entity)
 1. Models System and conversion (entity --> model)
 1. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
-1. ⌛ Reduce exotic technical implementations (like standardize logging to use Microsoft.Extensions.Logging)
+1. ⌛ [Standardize logging with Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) (core implemented; hardening and Insights parity remain)
 1. ⌛ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
 1. ⌛ [Automatic Code Generation](xref:Abyss.Releases.Epics.AutoGenerateAppDataModels) (Typed, Models, Automated) and ✅ IntelliSense improvements
 1. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
@@ -43,7 +43,7 @@ Main Priorities:
 ### To Be Released in v22
 
 1. @STV: Code Copilot: Auto-Generate models as they change - ca. 75% ⏳
-1. @STV: Logging move to Microsoft.Extensions.Logging - ca. 70% ⏳
+1. @STV: [Logging move to Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) - ca. 70% ⏳; opt-in on `develop`, validation and release work remain
 
 ### Things to Finalize and Document / Blog / Tutorial
 
