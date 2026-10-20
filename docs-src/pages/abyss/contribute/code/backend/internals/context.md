@@ -191,4 +191,27 @@ This is not final, but WIP as it could be improved, especially for clarity.
 
 ## History
 
-1. 
+1.
+
+
+## Random notes 2dm 2026-10-26 not finalized
+
+Diagnostics initialization of module/block etc. 2026-10-20 18:35
+
+1. Custom APIs
+    1. 1x AppApiControllerSelectorService.SelectController()
+        1. Get edition
+        2. block= TryGetBlockSpecsUsingModuleAndContentBlockHeaders(req)  pure 👍🏼
+        3. ShareBlockSpecs()
+        4. DnnWebApiAppFolderUtilities.GetAppFolder()
+            1. 5x!!! MAYBE: AppFolderLookupForWebApi.FindAppFolderFromScopeOrThrow () ⚠️
+            2x!!! SetAppFromNameOrUrlParamsOrUseExistingBlockRequired ("") ⚠️
+        5. If Block null! > SetAppFromPathOrNull(…)
+2. DnnSxcControllerBase
+    1. DnnCustomWebApiHelper
+    1. InitBlockSpecs
+        1. GetBlockAndContext  TryGetBlockSpecsUsingModuleAndContentBlockHeaders
+        2. ShareBlockSpecs()
+3. DnnSxcCustomControllerBase  always runs after the AppApiControllerSelectorService
+    1. DnnCustomWebApiHelper
+

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Changes to the Dev Environment in v22.01 | 2sxc 22 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Changes to the Dev Environment in v22.01 | 2sxc 22 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/dev-env-changes/22.01.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="">
+<h1 id="changes-to-the-dev-environment-in-v2201">Changes to the Dev Environment in v22.01</h1>
+
+<p>The current <code>develop</code> version is <strong>22.01.00</strong>.
+This guide covers updating an existing development installation by building and copying files without running the 2sxc installer.
+For the initial setup, see <a class="xref" href="../code/index.html">Contribute to 2sxc / EAV</a>.</p>
+<p>The ILogger integration upgrades the DNN logging dependencies from 2.1.1 to 8.0.0.
+Copying the new DLLs alone does not update the DNN host's assembly binding redirects.
+Apply the following steps even if you continue using Legacy logging.</p>
+<h2 id="1-prepare-the-existing-environment">1. Prepare the Existing Environment</h2>
+<ol>
+<li>Back up the development site's <code>web.config</code>, deployed 2sxc files and database so you can restore the previous environment.</li>
+<li>For DNN, use <strong>DNN 10.1 or later on .NET Framework 4.8</strong>, as required by the current module manifest.
+Upgrade an older DNN host and 2sxc module through its normal upgrade process before deploying the current development build.</li>
+</ol>
+<h2 id="2-dnn-build-and-update-the-assemblies">2. DNN: Build and Update the Assemblies</h2>
+<ol>
+<li><p>Restore NuGet packages and build the DNN project, <code>2sxc/Src/Dnn/ToSic.Sxc.Dnn/ToSic.Sxc.Dnn.csproj</code>, in <strong>Debug</strong> using your configured development build.
+This also builds its EAV and 2sxc project references.</p>
+</li>
+<li><p>Verify these four DLLs in the <strong>DNN website's <code>bin</code> folder</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Assembly</th>
+<th>NuGet package version</th>
+<th>Assembly version</th>
+<th>File version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Extensions.Logging.dll</code></td>
+<td>8.0.0</td>
+<td>8.0.0.0</td>
+<td>8.0.23.53103</td>
+</tr>
+<tr>
+<td><code>Microsoft.Extensions.Logging.Abstractions.dll</code></td>
+<td>8.0.0</td>
+<td>8.0.0.0</td>
+<td>8.0.23.53103</td>
+</tr>
+<tr>
+<td><code>Microsoft.Extensions.Options.dll</code></td>
+<td>8.0.0</td>
+<td>8.0.0.0</td>
+<td>8.0.23.53103</td>
+</tr>
+<tr>
+<td><code>Microsoft.Extensions.Primitives.dll</code></td>
+<td>8.0.0</td>
+<td>8.0.0.0</td>
+<td>8.0.23.53103</td>
+</tr>
+</tbody>
+</table>
+<p>These are the versions supplied by the current 2sxc DNN build for the DNN 10.1 baseline.
+The installation manifest uses <strong>file versions</strong>; binding redirects use <strong>assembly versions</strong>.</p>
+</li>
+</ol>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>A newer DNN host may already supply newer Microsoft.Extensions assemblies.
+Preserve the host's compatible dependency set and redirects; do not overwrite newer host DLLs with the 8.0.0 copies or redirect them back to 8.0.0.0.
+The XML in the next step applies when the deployed assemblies are version 8.0.0.0.</p>
+</div>
+<h3 id="other-logging-dependencies">Other Logging Dependencies</h3>
+<p>The current manifest and packaging rules already cover the other ILogger dependencies, including
+<code>Microsoft.Bcl.AsyncInterfaces</code>, <code>System.Diagnostics.DiagnosticSource</code>, <code>System.Memory</code>,
+<code>System.Numerics.Vectors</code> and <code>System.Runtime.CompilerServices.Unsafe</code>.
+DNN 10.1 supplies DependencyInjection 8, <code>System.Threading.Tasks.Extensions</code> and <code>System.Buffers</code> through its own dependency packages.
+No additional DLL entry was identified as missing from the ILogger dependency graph for that baseline.</p>
+<p>Keep the existing <code>bin/2sxc</code> placement and <code>codeBase</code> configuration for <code>Microsoft.Bcl.AsyncInterfaces</code>.
+Do not move isolated dependencies into the website's root <code>bin</code> as part of this update.</p>
+<p>The explicit <code>Microsoft.Extensions.Logging.Abstractions</code> package references in <code>ToSic.Sys.Core</code> have been removed because <code>Microsoft.Extensions.Logging</code> supplies them transitively.
+This does <strong>not</strong> remove the runtime dependency: <code>Microsoft.Extensions.Logging.Abstractions.dll</code> is still required.</p>
+<h3 id="missing-configuration-dlls-during-build">Missing Configuration DLLs During Build</h3>
+<p><code>Microsoft.Extensions.Logging</code> 8 no longer brings in <code>Microsoft.Extensions.Configuration</code>,
+<code>Microsoft.Extensions.Configuration.Abstractions</code> or <code>Microsoft.Extensions.Configuration.Binder</code> as transitive dependencies.
+Older DNN packaging and development copy rules still listed these files, causing <code>MSB3030</code> errors after a clean build.</p>
+<p>Use the updated <code>ModulePackage.Targets</code>, <code>AfterBuild.Targets</code> and DNN manifest from the current development source.
+If Visual Studio still reports the old copy errors, reload the DNN project so it picks up the changed target files, then rebuild.
+Do not add package references or copy old DLLs just to satisfy the obsolete entries.
+Imageflow's separately packaged <code>Configuration.Abstractions</code> dependency remains in place.</p>
+<h3 id="systembuffers-must-match-the-dnn-baseline">System.Buffers Must Match the DNN Baseline</h3>
+<p>DNN 10.1 already supplies <code>System.Buffers</code> <strong>4.6.0</strong>; newer hosts may supply a newer version.
+The DNN project references 4.6.0 for compilation with <code>ExcludeAssets</code> set to <code>runtime</code>, as it does for host-provided DependencyInjection assemblies.
+The 2sxc installation manifest, Release packaging and Debug copy rules no longer include <code>System.Buffers.dll</code>.
+This preserves the host's DLL and binding redirect.</p>
+<p>Previously, NuGet could resolve the older transitive minimum <strong>4.5.1</strong>, while the 2sxc manifest declared the newer DLL.
+An installation could then copy an older DLL and update its binding redirect to that older assembly version.</p>
+<table>
+<thead>
+<tr>
+<th>NuGet package</th>
+<th>Assembly version</th>
+<th>File version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.5.1 (older transitive minimum)</td>
+<td>4.0.3.0</td>
+<td>4.6.28619.01</td>
+</tr>
+<tr>
+<td>4.6.0 (DNN 10.1 baseline)</td>
+<td>4.0.4.0</td>
+<td>4.600.24.56208</td>
+</tr>
+<tr>
+<td>4.6.1 (newer host version)</td>
+<td>4.0.5.0</td>
+<td>4.600.125.16908</td>
+</tr>
+</tbody>
+</table>
+<p>After updating the source, restore and rebuild the DNN project.
+Reload the DNN project in Visual Studio to pick up the updated target files.
+The rebuilt 2sxc installer must not contain <code>bin/System.Buffers.dll</code> or declare it as an assembly in the manifest.
+A stale DLL left in a local build output must not be included in the installer or copied to the site.</p>
+<p>If a development site was already downgraded, stop its application pool, back up the current DLL and <code>web.config</code>,
+then restore the host's original <code>System.Buffers.dll</code> and set the active <code>System.Buffers</code> redirect to its actual assembly version.
+For the DNN 10.1 baseline this is <strong>4.0.4.0</strong>; if the host already used 4.6.1, preserve <strong>4.0.5.0</strong> instead.
+Restart the site and verify page rendering and the content editor.
+Do not lower an existing newer host DLL or redirect to the baseline version.</p>
+<h2 id="3-dnn-update-webconfig-binding-redirects">3. DNN: Update web.config Binding Redirects</h2>
+<p>Edit the <strong>DNN website's</strong> <code>web.config</code>.
+Inside the existing <code>&lt;configuration&gt;&lt;runtime&gt;&lt;assemblyBinding xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;</code>,
+replace the active entries for the following four assemblies with these values when using the 8.0.0.0 DLLs:</p>
+<pre><code class="lang-xml">&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Logging&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;8.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Logging.Abstractions&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;8.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Options&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;8.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+&lt;dependentAssembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+  &lt;assemblyIdentity name=&quot;Microsoft.Extensions.Primitives&quot; publicKeyToken=&quot;adb9793829ddae60&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-32767.32767.32767.32767&quot; newVersion=&quot;8.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+</code></pre>
+<p>Keep exactly one active <code>dependentAssembly</code> entry per assembly in this binding section.
+Comment out or replace older 2.1.1/2.2 entries and remove obsolete <code>codeBase</code> mappings for these four assemblies that point to copies under <code>bin/Imageflow</code>.
+Preserve unrelated entries and the existing assembly-binding section.</p>
+<p>If the host supplies newer versions, use their actual assembly versions and preserve its compatible configuration instead of applying the example above.
+The redirects and the deployed DLLs must agree.</p>
+<h2 id="4-oqtane-update-through-the-existing-development-build">4. Oqtane: Update Through the Existing Development Build</h2>
+<ol>
+<li>Restore and build the Oqtane projects with the SDK and host version required by the checked-out source.
+Use the existing Oqtane development copy configuration to update the module and its 2sxc/EAV assemblies.
+Oqtane supplies logging through the ASP.NET Core shared framework, and <code>DiagnosticSource</code> is part of the .NET runtime.</li>
+<li>Restart the application after updating the module files.</li>
+</ol>
+<p>The platform-neutral EAV library still declares its own logging compile dependencies.
+The presence of logging in the host does not replace those project references.</p>
+<h2 id="5-optional-enable-microsoftextensionslogging">5. Optional: Enable Microsoft.Extensions.Logging</h2>
+<p>Legacy remains the default logging stack.
+Enabling MEL is a separate development choice and is not required to complete the assembly update.</p>
+<p>For DNN, merge this entry into the existing <code>&lt;appSettings&gt;</code> section in the website's <code>web.config</code>:</p>
+<pre><code class="lang-xml">&lt;add key=&quot;Logging:2sxc:UseMel&quot; value=&quot;true&quot; /&gt;
+</code></pre>
+<p>For Oqtane, merge this property into the existing <code>Logging</code> section of the host's <code>appsettings.json</code>:</p>
+<pre><code class="lang-json">{
+  &quot;Logging&quot;: {
+    &quot;2sxc&quot;: {
+      &quot;UseMel&quot;: true
+    }
+  }
+}
+</code></pre>
+<p>Restart the application after changing the setting.
+To return to Legacy, set it to <code>false</code> and restart.
+See the <a class="xref" href="../../releases/epics/logging.html">logging roadmap</a> for configuration details and current limitations.</p>
+<hr>
+<h2 id="history">History</h2>
+<ul>
+<li>2026-10-20: Add the v22.01 development upgrade guide for logging dependencies, DNN binding redirects and optional MEL configuration.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/dev-env-changes/22.01.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

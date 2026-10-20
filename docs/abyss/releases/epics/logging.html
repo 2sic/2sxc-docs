@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Epic: Logging with Microsoft.Extensions.Logging | 2sxc 22 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Epic: Logging with Microsoft.Extensions.Logging | 2sxc 22 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/releases/epics/logging.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Releases.Epics.Logging">
+<h1 id="epic-logging-with-microsoftextensionslogging">Epic: Logging with Microsoft.Extensions.Logging</h1>
+
+<p>Move EAV and 2sxc logging to Microsoft.Extensions.Logging (MEL),
+while keeping the existing logging calls and the Insights experience.
+This connects 2sxc diagnostics to the logging providers configured by the host.</p>
+<h2 id="-status-overview--wip---updated-2026-10-19">📈 Status Overview ⌛ WIP - Updated: 2026-10-19</h2>
+<ul>
+<li>Implementation: ca. 70% (roadmap estimate; core integration is on <code>develop</code>, hardening remains)</li>
+<li>Documentation: overview and host configuration below; detailed guides and tutorials remain</li>
+<li>Next Priorities:
+<ol>
+<li>Harden logging failure handling and diagnostic output</li>
+<li>Finish Insights presentation and history consistency</li>
+<li>Measure performance and validate both hosts before wider rollout</li>
+</ol>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Implemented on <code>develop</code> does not mean released or ready for general production use.
+MEL is opt-in. Legacy remains the default while the remaining work is completed.</p>
+</div>
+<h2 id="motivation">Motivation</h2>
+<p>2sxc has its own logging API and an Insights UI tailored to debugging apps, modules and startup.
+MEL makes these diagnostics available to standard host logging providers as well,
+without requiring all existing callers to be rewritten.
+It also provides structured events and request correlation for future observability integrations.</p>
+<h2 id="features-needed">Features Needed</h2>
+<h3 id="logging-api-and-stack-selection--done">Logging API and stack selection (✅ done)</h3>
+<ol>
+<li>✅ Keep the existing <code>ILog</code>, <code>Fn</code>, <code>Done</code> and <code>Return</code> calling patterns.</li>
+<li>✅ Create logs through a factory, with separate Legacy and MEL implementations.</li>
+<li>✅ Select one complete logging stack before the first startup log is created.</li>
+<li>✅ Register the matching store and Insights reader; reject mixing the two stacks.</li>
+<li>✅ Configure selection in DNN and Oqtane, once per application lifetime.</li>
+</ol>
+<p>📈 Status: ✅ Implemented on <code>develop</code>. Compatibility edge cases still need hardening.</p>
+<h3 id="host-logging-and-startup-diagnostics--done">Host logging and startup diagnostics (✅ done)</h3>
+<ol>
+<li>✅ Send structured events through the host's <code>ILoggerFactory</code> using <code>ToSic.*</code> categories.</li>
+<li>✅ Include source location, log name, severity and available <code>Activity</code> trace/span identifiers.</li>
+<li>✅ Emit operation completion, result and timing data, plus separate log metadata events.</li>
+<li>✅ Establish DNN request correlation; use the ambient <code>Activity</code> when available.</li>
+<li>✅ Buffer pre-DI startup events and replay them after the host logger factory becomes available.</li>
+</ol>
+<p>The startup buffer retains at most 4,096 events or 1 MiB of diagnostic characters.
+It drops whole events when necessary and reports the dropped count after binding.
+Replayed events retain their original timestamps and detached exception diagnostics.</p>
+<p>The host owns the logger factory and its providers.
+Where DNN does not already supply a factory, <code>AddLogging()</code> supplies one.
+Enabling MEL does not automatically install a file logger, Serilog sink or telemetry exporter.</p>
+<p>📈 Status: ✅ Implemented on <code>develop</code>; provider failure handling and live host validation remain.</p>
+<h3 id="insights-with-mel--wip">Insights with MEL (⌛ WIP)</h3>
+<ol>
+<li>✅ Capture detached, immutable diagnostic events in a bounded in-memory store.</li>
+<li>✅ Read both Legacy and MEL diagnostics through snapshot readers for Insights.</li>
+<li>✅ Support listing, detail views, pause/resume and flushing.</li>
+<li>✅ Group histories by the log added to a store (<code>LogGroupId</code>), with named segments such as <code>boot-log</code>.</li>
+<li>✅ Use <code>TraceId</code> to correlate related histories within a request.</li>
+<li>✅ Preserve precise start times and durations for rendering.</li>
+<li>🔳 Finish presentation parity: timings, hierarchy/indentation, timers and recognizable log/instance names.</li>
+<li>🔳 Check early messages from other producers and shared services across multiple modules and asynchronous calls.</li>
+<li>🔳 Finish obsolete-code warning compatibility and restore missing list information where needed.</li>
+</ol>
+<p>The MEL Insights store currently defaults to 4,096 events, 500 groups and a 16 MiB estimated retention budget,
+with a maximum of 4,096 events per group.
+The byte budget is an estimate, not a measured process-memory limit.
+Insights is an in-memory diagnostic history; it is not persistent log storage.</p>
+<p>📈 Status: ⌛ The read path and detail rendering are implemented; full Legacy-equivalent behavior is still being finalized.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The setting <code>Logging:2sxc:UseMel</code> selects the complete stack at application startup:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Selected stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>true</code></td>
+<td>MEL, including the MEL Insights provider and store</td>
+</tr>
+<tr>
+<td><code>false</code>, missing or invalid</td>
+<td>Legacy</td>
+</tr>
+</tbody>
+</table>
+<p>Changing the setting requires an application restart.
+The mode cannot be switched per request or by reloading configuration during the same application lifetime.
+To return to Legacy, set it to <code>false</code> and restart the application.</p>
+<h3 id="dnn-webconfig">DNN: web.config</h3>
+<p>Add or update the entry inside the existing <code>&lt;appSettings&gt;</code> element in the <strong>DNN host installation's</strong> <code>web.config</code>:</p>
+<pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;appSettings&gt;
+    &lt;add key=&quot;Logging:2sxc:UseMel&quot; value=&quot;true&quot; /&gt;
+  &lt;/appSettings&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p>Merge this entry into the existing configuration; do not replace other settings or create a second <code>&lt;appSettings&gt;</code> element.
+The <code>web.config</code> in the 2sxc source project is a Visual Studio placeholder, not the host configuration.
+Restart/recycle the DNN application after changing the setting.</p>
+<h3 id="oqtane-appsettingsjson">Oqtane: appsettings.json</h3>
+<p>Merge this property into the existing <code>Logging</code> section in the <strong>Oqtane host installation's</strong> <code>appsettings.json</code>:</p>
+<pre><code class="lang-json">{
+  &quot;Logging&quot;: {
+    &quot;2sxc&quot;: {
+      &quot;UseMel&quot;: true
+    }
+  }
+}
+</code></pre>
+<p>Preserve the other logging settings and restart the Oqtane application.
+Currently, 2sxc reads this flag through its own configuration builder loading only <code>appsettings.json</code>.
+Environment variables such as <code>Logging__2sxc__UseMel</code> and <code>appsettings.Production.json</code> do not override this flag in that reader.
+Using the host configuration consistently is remaining work.</p>
+<h3 id="log-levels-and-providers">Log levels and providers</h3>
+<p><code>UseMel</code> selects the backend; it does not configure the host's sinks or their log levels.
+The Insights provider has its own <code>Trace</code> rule, without lowering the filters for other providers.
+Ordinary diagnostic messages and metadata use <code>Trace</code>, operation completions/results use <code>Debug</code>,
+and warnings/errors use their corresponding MEL levels.
+As a result, detailed messages can appear in Insights while being absent from host log files.
+Host providers can also impose their own filtering or support different structured properties.</p>
+<h2 id="planned-improvements-and-roadmap">Planned Improvements and Roadmap</h2>
+<h3 id="before-wider-mel-rollout">Before wider MEL rollout</h3>
+<ol>
+<li>🔳 <strong>Failure isolation and compatibility:</strong> prevent failing host providers from breaking application work;
+cover null/disabled parent-log edge cases and obsolete-code warnings;
+verify static factory selection and DI registration agree in supported startup flows.</li>
+<li>🔳 <strong>Diagnostic output:</strong> harden DNN debug-comment output and review request-wide dumps,
+automatic result stringification and sensitive data retention before sending more detail to host sinks.</li>
+<li>🔳 <strong>Insights consistency:</strong> finish the presentation and history work above,
+including early messages, shared services and asynchronous links.</li>
+<li>🔳 <strong>Performance:</strong> measure and reduce the global forwarding lock, store sorting/scanning under locks,
+snapshot costs and per-log <code>AsyncLocal</code> overhead; check paused-capture costs and retention under load.</li>
+<li>🔳 <strong>Configuration and discoverability:</strong> report the active stack clearly and align Oqtane flag loading with host configuration.</li>
+<li>🔳 <strong>Validation and release documentation:</strong> run representative DNN and Oqtane scenarios in both modes,
+including startup, multiple modules, APIs, errors, pause/flush, provider failures and sustained load;
+publish the supported configuration and troubleshooting guidance.</li>
+</ol>
+<h3 id="features-in-consideration">Features in Consideration</h3>
+<ol>
+<li>Standard telemetry integrations such as OpenTelemetry/OTLP and Aspire, configured through the host.</li>
+<li>Further simplification of internal logging once compatibility and Insights behavior are established.</li>
+</ol>
+<p>📈 Status: 🔳 Future integration work; exporters and external telemetry storage are not part of the implemented core.</p>
+<h2 id="related-features">Related Features</h2>
+<ol>
+<li>2sxc Insights and application diagnostics</li>
+<li>DNN and Oqtane host logging providers, including Serilog where configured by the host</li>
+<li><code>System.Diagnostics.Activity</code> request correlation</li>
+<li>Startup and app-load debug-level configuration</li>
+</ol>
+<h2 id="history">History</h2>
+<ol>
+<li>2026-09 implemented the logging factory, MEL events, bounded Insights storage and host integration.</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/releases/epics/logging.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

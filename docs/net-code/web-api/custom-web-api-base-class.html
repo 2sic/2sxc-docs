@@ -187,22 +187,24 @@ You don't need this part.</p>
 <ol>
 <li><code>DotNetNuke.Web.Api.DnnApiController</code>
 <ol>
-<li><p>🥷🏽 <code>ToSic.Sxc.Dnn.WebApi.DnnApiControllerWithFixes&lt;TRealController&gt;</code><br>
-<em>internal base for everything but without context of module/block</em><br>
+<li><p>🥷🏽 <code>ToSic.Sxc.Dnn.WebApi.Sys.DnnSxcControllerRoot</code><br>
+<em>abstract, internal base for everything but without context of module/block</em><br>
 🔹 changes serialization (remove XML v3+ to default to Newtonsoft)<br>
 🔹 add System.Text.Json in v14.10+ to replace Newtonsoft<br>
 🔹 Adds logging to insights<br>
+🔹 Adds DNN Logging Exceptions<br>
 🔹 Base class for <strong>Real</strong> controller concept</p>
 <ol>
 <li>🥷🏽 <code>various</code> <em>internal API Controllers which don't need the context</em></li>
-<li>🥷🏽 <code>ToSic.Sxc.WebApi.SxcApiControllerBase&lt;TRealController&gt;</code> <em>internal</em><br>
-🔹 Adds DNN Logging Exceptions<br>
-🔹 Add basic context of Block (Module) information
+<li>🥷🏽 <code>ToSic.Sxc.Dnn.WebApi.Sys.DnnSxcControllerBase</code> <em>abstract,internal</em><br>
+🔹 Initializes basic context of Block (Module) information
 <ol>
 <li>🥷🏽 <code>various</code> <em>internal API Controllers which need the context</em></li>
-<li>🥷🏽 <code>ToSic.Sxc.WebApi.DynamicApiController</code> <em>internal</em><br>
-<em>non-generic base class for all others</em><br>
-🔹 Adds empty contstructor to allow simple inheritance
+</ol>
+</li>
+<li>🥷🏽 <code>ToSic.Sxc.Dnn.WebApi.Sys.DnnSxcCustomControllerBase</code> <em>abstract, internal</em><br>
+<em>shared base class for all custom code variants</em><br>
+🔹 Adds empty constructor to allow simple inheritance
 🔹 Provides DynamicCode object and better context (block/module)</li>
 </ol>
 </li>
@@ -211,33 +213,22 @@ You don't need this part.</p>
 </ol>
 </li>
 </ol>
-</li>
-</ol>
-<p>Based on that these public base classes were made:</p>
+<p>Derived from the hidden <code>DnnSxcCustomControllerBase</code> these public base classes were made:</p>
 <ol>
-<li>⭐💀 <code>ToSic.SexyContent.WebApi.SxcApiController</code> <em>public, very old/deprecated</em><br>
+<li>💀 <code>ToSic.SexyContent.WebApi.SxcApiController</code> <em>public, very old/deprecated</em><br>
 <em>oldest base class, should not be used any more</em><br>
-🔹 had some exotic propecties such as <code>List</code> which contained Content/Presentation pairs</li>
-<li>⭐💀 <code>ToSic.Sxc.Dnn.ApiController</code> <em>public, old/deprecated</em><br>
+🔹 had some exotic properties such as <code>List</code> which contained Content/Presentation pairs<br>
+🔹 is the default class used if no <code>@inherits</code> is specified in a razor view</li>
+<li>💀 <code>ToSic.Sxc.Dnn.ApiController</code> <em>public, old/deprecated</em><br>
 <em>was the recommended base class for v10 and v11</em></li>
-<li>🥷🏽 <code>ToSic.Sxc.WebApi.ApiCoreShim</code> <em>internal</em><br>
-<em>adds a lot of .net core API commands to the controller</em>
+<li>💀 <code>Custom.Hybrid.Api12</code> <em>public, old/deprecated</em>
 <ol>
-<li>⭐💀 <code>Custom.Hybrid.Api12</code> <em>public, old/deprecated</em>
-<ol>
-<li>⭐💀 <code>Custom.Dnn.Api12</code> <em>public, old/deprecated</em></li>
+<li>💀 <code>Custom.Dnn.Api12</code> <em>public, old/deprecated</em></li>
 </ol>
 </li>
-<li><code>Custom.Hybrid.Advanced.Api14&lt;TModel, TServiceKit&gt;</code> <em>internal</em><br>
-<em>like Api12, but without the <code>Convert</code> object</em>
-<ol>
-<li>⭐🌟 <code>Custom.Hybrid.Api14</code> <em>public, <strong>recommended</strong></em></li>
-<li>❓ <code>Custom.Hybrid.Api15</code> <em>WIP</em><br>
+<li>💀 <code>Custom.Hybrid.Api14</code> <em>public, old/deprecated</em></li>
+<li>🌟 <code>Custom.Hybrid.ApiTyped</code> <em>latest since v16, <strong>recommended</strong></em><br>
 ⚡ <em>will use System.Text.Json for javascript serialization</em></li>
-</ol>
-</li>
-</ol>
-</li>
 </ol>
 
 </article>

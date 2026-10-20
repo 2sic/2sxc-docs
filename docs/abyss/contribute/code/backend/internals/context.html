@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Context Information | 2sxc 22 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Context Information | 2sxc 22 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/internals/context.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../../index.html">
+            <img id="logo" class="svg" src="../../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Abyss.Contribute.Backend.Internals.Context">
+<h1 id="context-information">Context Information</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>This is meant for people who want to contribute to the underlying source code of 2sxc and EAV.</p>
+<p>If you only want to USE 2sxc / EAV, then <strong>you do NOT need this</strong>.</p>
+</div>
+
+<p>All executing code needs some context to understand its environment and state.
+This context information differs depending on what is happening, so there is quite a bit of complexity.
+These docs should catalog all the context infos that exist, how and when they get initialized, and how they are used.</p>
+<h2 id="overview">Overview</h2>
+<p>The context provides essential information about the current execution environment,
+including details about the request, user, and other relevant state.
+It is crucial for ensuring that code behaves correctly depending on where and how it is executed.</p>
+<p>The focus is on information which is necessary for the execution
+and for retrieving further information.
+For example, knowing what module is being displayed is essential for loading the data,
+while the data itself is secondary (since it can be retrieved once the context is known).</p>
+<h2 id="goals">Goals</h2>
+<ol>
+<li>Services which need context information can get it easily</li>
+<li>Ideally expensive retrieval operations are not repeated</li>
+<li>Optional context information is retrieved/built only when needed</li>
+<li>There is a clear path of context-creation, to keep debugging simple</li>
+</ol>
+<h2 id="types-of-context-information">Types of Context Information</h2>
+<ol>
+<li>System Information (Paths, DB-Connections, etc)</li>
+<li>System specs such as available and activated license.</li>
+<li>User Information (Authentication, Roles, Preferences)</li>
+<li>Configuration information (settings per app, site, etc.)</li>
+<li>Tenant Information (the exact site)</li>
+<li>Language (User's preferred language, Locale, default language of the site)</li>
+<li>Request Information (Headers, Query Parameters, Body)</li>
+<li>Module Information (Module ID, Settings, Context)</li>
+<li>App Information (App ID, Version, Configuration)</li>
+<li>Content-Block Information</li>
+</ol>
+<p>Specifically for an app to show, it needs:</p>
+<ol>
+<li>User information: <code>IUser</code> <em>injectable</em></li>
+<li>Tenant information: <code>ISite</code> <em>injectable</em></li>
+<li>Page information: <code>IPage</code> <em>injectable</em></li>
+<li>Module information: <code>IModule</code> <em>not injectable</em></li>
+<li>App information: <code>IApp</code> <em>not injectable</em></li>
+<li>Content-Block information: <code>IContentBlock</code> and <code>IContentBlockIdentifier</code> <em>not injectable</em></li>
+<li>Execution Context: (special: ATM provided through <code>INeedsExecutionContext</code> - is being reworked) <em>not injectable</em></li>
+</ol>
+<p>Context Bundles</p>
+<ol>
+<li><code>ContextOfSite</code> (Site, User, Permissions) <em>injectable</em></li>
+<li><code>ContextOfApp</code> (<code>ContextOfSite</code>, Updated Permissions, + AppSettings, AppResources, AppReaderOrNull, AppReaderRequired) <em>❗ not injectable</em></li>
+<li><code>ContextOfBlock</code> (<code>ContextOfApp</code>, Updated permissions, + Page, Module, Publishing, PageServiceShared) <em>❗ not injectable</em></li>
+<li>Execution Context TODO: <em>❗ not injectable</em></li>
+</ol>
+<h2 id="types-of-context-providers--services">Types of Context Providers / Services</h2>
+<ol>
+<li>Standalone: Site, User, Page (DNN splits factory and data; Oqtane still mixed with object itself)</li>
+<li>Context Bundles: <code>ContextOfSite</code> <em>injectable</em>, <code>ContextOfApp</code>, <code>ContextOfBlock</code> <em>not injectable</em></li>
+<li>Context Services: <code>ISxcCurrentContextService</code>, <code>ISxcAppCurrentContextService</code>, <code>ICurrentContextService</code> - all providing the same <strong>scoped</strong> <code>SxcCurrentContextService</code> implementation <em>injectable</em></li>
+<li>Object with Context: <code>IBlock</code> <em>❗ not injectable</em></li>
+<li>Context Wrappers <code>ICmsContext</code> (not important here) <em>❗ not injectable</em></li>
+<li>Context with Services: <code>ExecutionContext</code> <em>❗ not injectable for now</em></li>
+</ol>
+<h2 id="process">Process</h2>
+<h2 id="different-levels-of-context-completeness">Different Levels of Context Completeness</h2>
+<p>A core challenge is that depending on the entry point and state, various information may not be available.
+In such scenarios, it's possible that certain operations cannot run.
+Here some examples:</p>
+<ol>
+<li>On a typical page/module/content-block load, we have everything
+<ul>
+<li>System Information</li>
+<li>User Information</li>
+<li>Tenant Information</li>
+<li>Request Information</li>
+<li>Module Information</li>
+<li>App Information</li>
+<li>Content-Block Information</li>
+</ul>
+</li>
+<li>On some special page/module/content-block load, certain context information may be missing or different
+<ul>
+<li>If the block was not yet initialized, it may not have an App or a Content-Block</li>
+<li>If the block is in initial preview mode, the App may be temporarily set</li>
+<li>If the block is trying out different views, the View is available, but it's not persisted</li>
+</ul>
+</li>
+<li>For WebAPI calls, the context may be very limited, often only including System and User Information.
+<ul>
+<li>Some only have the system and user</li>
+<li>Some may also know the tenant</li>
+<li>Rarely, some may have additional context like Module or App Information</li>
+</ul>
+</li>
+</ol>
+<h2 id="entry-points">Entry Points</h2>
+<p>The entry points matter, because they are usually the first time any code runs -
+and should ensure that at least some of the context is initialized and &quot;broadcast&quot; to the rest of the system.</p>
+<p>This should become a comprehensive list of entry points, to ensure that
+we can better manage what happens when.</p>
+<h3 id="0-compile-time">0. Compile Time</h3>
+<p>At compile time, some minimal context is already added, since the build is targeted to a specific platform.
+These are:</p>
+<ol>
+<li>Services registrations (in the platform specific StartUp)</li>
+<li>.net runtime information (usually based on <code>#if</code> directives and similar)</li>
+<li>Platform information (registered through DI of the specific platform)</li>
+<li>System features, like &quot;does this platform support C# 9&quot;</li>
+</ol>
+<h3 id="1-application-start">1. Application Start</h3>
+<p>The application usually starts outside of 2sxc, when DNN, Oqtane or a custom application starts.
+This kind of information is provided</p>
+<ul>
+<li>often as as static information (but provided by transient services)</li>
+<li>sometimes provided through singleton services</li>
+</ul>
+<p>These are:</p>
+<ol>
+<li>Database connections and configurations</li>
+<li>System Paths (to the UIs, App root paths, etc.)</li>
+<li>Catalogs (like available DataSources, features, licenses, etc.)</li>
+<li>Activations (like feature toggles or license activations)</li>
+</ol>
+<p>In addition, 2sxc/EAV will require information from the system itself,
+such as user roles, etc. which the application handles differently depending on the platform.
+Some of this information may be preloaded at start,
+others are fetched on demand.</p>
+<h3 id="2-user-http-request">2. User HTTP Request</h3>
+<p>HTTP Requests are the primary way users interact with the application.
+There are a few variants to this - both if it's an page or an API request,
+as well as different HTTP methods like GET, POST, PUT, and DELETE.</p>
+<p>As of now, there is no universal HTTP request initialization,
+each type of http-request has it's own mechanisms (see below).</p>
+<h3 id="3-interactive-page-load">3. Interactive Page Load</h3>
+<p>This is everything which happens when a normal page is loaded and rendered for the user.
+It's important to understand that DNN and Oqtane have different page lifecycle events,
+and the exact mechanism differ between platforms and Razor rendering models in Oqtane.</p>
+<h3 id="31-page-load">3.1 Page Load</h3>
+<p>TODO: differences Dnn/Oqtane, Oqtane hosting models</p>
+<h3 id="32-module-load-on-a-page">3.2 Module Load on a Page</h3>
+<h3 id="33-inner-content-block-within-a-module">3.3 Inner Content-Block within a Module</h3>
+<h3 id="4-web-api-calls">4. Web API Calls</h3>
+<p>Web API calls are the most diverse in terms of available context.
+For an overview:</p>
+<ol>
+<li>Some calls only know what site it's for + the user</li>
+<li>Others know what page, module and content-block it's for</li>
+<li>Others know the app and user, but not a page, module or content-block.</li>
+</ol>
+<p>These differences affect what can actually run within this context.
+It also affects security checks, because certain permissions may be configured per module,
+which cannot be verified if the module is not known.</p>
+<h3 id="41-standard-web-api-call">4.1 Standard Web API Call</h3>
+<h3 id="42-app-specific-webapi-controllers">4.2 App specific WebApi Controllers</h3>
+<p>In DNN there is first a lookup system to find the controller.
+Since this needs almost all the context information,
+it will also put it into the shared State as of now.</p>
+<p>When the DLL is then loaded, the underlying base class
+will retrieve the shared (scoped) context and use it to build the Execution Context.</p>
+<p>This is not final, but WIP as it could be improved, especially for clarity.</p>
+<h3 id="5-background-tasks">5. Background Tasks</h3>
+<h3 id="51-dnn-search-indexing">5.1 DNN Search Indexing</h3>
+<h3 id="52-oqtane-background-tasks">5.2 Oqtane Background Tasks</h3>
+<h2 id="history">History</h2>
+<ol>
+<li></li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/abyss/contribute/code/backend/internals/context.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
