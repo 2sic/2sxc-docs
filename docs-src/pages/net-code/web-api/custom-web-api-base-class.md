@@ -114,12 +114,12 @@ Basis for everything:
             1. 🥷🏽 `ToSic.Sxc.Dnn.WebApi.Sys.DnnSxcControllerBase` _abstract,internal_  
               🔹 Initializes basic context of Block (Module) information
                 1. 🥷🏽 `various` _internal API Controllers which need the context_
-                1. 🥷🏽 `ToSic.Sxc.Dnn.WebApi.Sys.DnnSxcCustomControllerBase` _abstract, internal_  
-                    _shared base class for all custom code variants_  
-                    🔹 Adds empty constructor to allow simple inheritance
-                    🔹 Provides DynamicCode object and better context (block/module)
+            1. 🥷🏽 `ToSic.Sxc.Dnn.WebApi.Sys.DnnSxcCustomControllerBase` _abstract, internal_  
+                _shared base class for all custom code variants_  
+                🔹 Adds empty constructor to allow simple inheritance
+                🔹 Provides DynamicCode object and better context (block/module)
 
-Based on the `DnnSxcCustomControllerBase` these public base classes were made:
+Derived from the hidden `DnnSxcCustomControllerBase` these public base classes were made:
 
 1. 💀 `ToSic.SexyContent.WebApi.SxcApiController` _public, very old/deprecated_  
     _oldest base class, should not be used any more_  

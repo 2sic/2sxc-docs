@@ -44,6 +44,7 @@ Main Priorities:
 
 1. @STV: Code Copilot: Auto-Generate models as they change - ca. 75% ⏳
 1. @STV: Logging move to Microsoft.Extensions.Logging - ca. 70% ⏳
+1. @STV: Unique value constraints - ca. 75% ⏳
 
 ### Things to Finalize and Document / Blog / Tutorial
 
@@ -269,7 +270,7 @@ Apps / App Maintenance
 
 1. Support for persisting data to the file-system instead of DB
 1. Blazor integration for use in client-side Blazor  
-    ATM not really usefuly, because blazor is not run-time compiled yet, so development would be super difficult
+    ATM not really useful, because blazor is not run-time compiled yet, so development would be super difficult
 1. Review further integrations
     1. nopCommerce integration
     1. Orchard integration
