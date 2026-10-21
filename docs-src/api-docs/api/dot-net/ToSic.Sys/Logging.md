@@ -56,8 +56,7 @@ It works as follows:
     1. should pass the dependencies into the base constructor.
     1. The dependencies are then available on a `Services` property.
     1. For this to work, the `Dependencies` should inherit from
-        [`ToSic.Sys.Services.DependenciesBase`](xref:ToSic.Sys.Services.DependenciesBase)
-        or [`ToSic.Sys.Services.DependenciesRecord`](xref:ToSic.Sys.Services.DependenciesRecord).
+        [`ToSic.Sys.Services.DependenciesBase`](xref:ToSic.Sys.Services.DependenciesBase).
 
 ## Logging
 

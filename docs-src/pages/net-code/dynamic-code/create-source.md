@@ -6,7 +6,7 @@ uid: NetCode.DynamicCode.CreateSource
 
 If you need to use a `DataSource` object in your code use `CreateSource<T>()`
 
-⚡ The [official API docs](xref:Custom.Hybrid.Razor12.CreateSource*).
+⚡ The [official API docs](xref:ToSic.Sxc.Services.IDataService).
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]

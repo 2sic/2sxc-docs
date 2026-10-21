@@ -14,7 +14,7 @@ The easiest way to create link tiles is using a Markdown list with links and an 
 ```md
 * [Read more about GetService in your Code](xref:NetCode.DynamicCode.GetService){title="icon:file-code"}
     this is a subtitle
-* [Check out the GetService API](xref:Custom.Hybrid.Razor12.GetService*){title="icon:journal-code"}
+* [Check out the GetService API](xref:Custom.Hybrid.RazorTyped.GetService*){title="icon:journal-code"}
 * [Typical 2sxc Services you May Need](xref:ToSic.Sxc.Services){title="icon:journal-code"}
 * [Dependency Injection in Dnn Modules and Skins](xref:NetCode.PlatformApi.Dnn.DependencyInjection){title="icon:☢️"}
 * [Dependency Injection in Oqtane](xref:NetCode.PlatformApi.Oqtane.DependencyInjection){title="icon:🩸"}
@@ -24,7 +24,7 @@ This will automatically be converted to tiles like this:
 
 * [Read more about GetService in your Code](xref:NetCode.DynamicCode.GetService){title="icon:file-code"}
     this is a subtitle
-* [Check out the GetService API](xref:Custom.Hybrid.Razor12.GetService*){title="icon:journal-code"}
+* [Check out the GetService API](xref:Custom.Hybrid.RazorTyped.GetService*){title="icon:journal-code"}
 * [Typical 2sxc Services you May Need](xref:ToSic.Sxc.Services){title="icon:journal-code"}
 * [Dependency Injection in Dnn Modules and Skins](xref:NetCode.PlatformApi.Dnn.DependencyInjection){title="icon:☢️"}
 * [Dependency Injection in Oqtane](xref:NetCode.PlatformApi.Oqtane.DependencyInjection){title="icon:🩸"}

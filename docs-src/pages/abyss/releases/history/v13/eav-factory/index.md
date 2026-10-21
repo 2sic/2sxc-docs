@@ -29,7 +29,7 @@ var convertService = ToSic.Eav.Factory.Resolve<IConvertService>();
 
 ## What we Changed
 
-In 2sxc 11.11 we introduced the `GetService<T>()` ([e.g. docs](xref:Custom.Hybrid.Razor12.GetService*)) which takes care of this.
+In 2sxc 11.11 we introduced the `GetService<T>()` ([e.g. docs](xref:Custom.Hybrid.RazorTyped.GetService*)) which takes care of this.
 Please use this from now on.
 
 The old API will be disabled disabled and will show an error pointing to this documentation.

@@ -10,7 +10,7 @@ If you want to do advanced stuff, you will want to ask for other global Services
 
 Use `GetService<T>()` to get this service. 
 
-⚡ The [official API docs](xref:Custom.Hybrid.Razor12.GetService*).
+⚡ The [official API docs](xref:Custom.Hybrid.RazorTyped.GetService*).
 
 
 [!include["Razor Tutorials"](~/shared/tutorials/razor.md)]

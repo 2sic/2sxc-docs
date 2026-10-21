@@ -36,7 +36,7 @@ This is how your code would get a service:
 ## Discover More
 
 * [Read more about GetService in your Code](xref:NetCode.DynamicCode.GetService){title="icon:file-code"}
-* [Check out the GetService API](xref:Custom.Hybrid.Razor12.GetService*){title="icon:journal-code"}
+* [Check out the GetService API](xref:Custom.Hybrid.RazorTyped.GetService*){title="icon:journal-code"}
 * [Typical 2sxc Services you May Need](xref:ToSic.Sxc.Services){title="icon:journal-code"}
 * [Dependency Injection in Dnn Modules and Skins](xref:NetCode.PlatformApi.Dnn.DependencyInjection){title="icon:☢️"}
 * [Dependency Injection in Oqtane](xref:NetCode.PlatformApi.Oqtane.DependencyInjection){title="icon:🩸"}

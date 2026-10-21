@@ -43,7 +43,7 @@ var internalAppApi = ToSic.Sxc.Dnn.Factory.App(42, false, false, null);
 
 ## What we Changed
 
-In 2sxc 11.11 we introduced the `GetService<T>()` ([e.g. docs](xref:Custom.Hybrid.Razor12.GetService*)) which takes care of this.
+In 2sxc 11.11 we introduced the `GetService<T>()` ([e.g. docs](xref:Custom.Hybrid.RazorTyped.GetService*)) which takes care of this.
 Please use this from now on.
 
 
