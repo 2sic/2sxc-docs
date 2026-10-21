@@ -2,13 +2,13 @@
 uid: NetCode.DynamicCode.CmsContext
 ---
 
-# CmsContext in Dynamic Code ✨ new!
+# CmsContext in Dynamic Code ✨ new
 
-To enable Hybrid Razor which works on Dnn and Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the `Dnn` object which obviously doesn't on Oqtane and other platforms. 
+To enable Hybrid Razor which works on Dnn and Oqtane, we need standards so that our Dynamic Code can access information about the page, module etc. Up until now our code always used the `Dnn` object which obviously doesn't on Oqtane and other platforms.
 
-So we're creating this new standardized object to ask for these things. 
+So we're creating this new standardized object to ask for these things.
 
-⚡ The [official API docs](xref:Custom.Hybrid.Razor12.CmsContext) of the Object on the Dynamic Code
+⚡ The [official API docs](xref:Custom.Hybrid.Razor14.CmsContext) of the Object on the Dynamic Code
 
 ⚡ The [official API docs](xref:ToSic.Sxc.Context.ICmsContext) of the `ICmsContext` object
 
@@ -22,8 +22,8 @@ Information about the platform the system is running on. Usually Dnn or Oqtane.
 
 | Name | Type | Value Example | Description
 | --- | --- | --- | ---
-| Type | PlatformType | `PlatformType.Dnn` 
-| Name | string | `Dnn` 
+| Type | PlatformType | `PlatformType.Dnn`
+| Name | string | `Dnn`
 
 👉 [](xref:ToSic.Sxc.Context.ICmsPlatform)
 
@@ -95,6 +95,7 @@ Culture information for the current request.
 ## Demo App and further links
 
 You should find some code examples in this demo App
+
 * No demo apps exist yet
 
 ## History

@@ -40,16 +40,6 @@ In v17.03 we introduced the capability to create your own base classes in the `A
 
 For older base classes and the differences, see below.
 
-## Older Base Classes (Dynamic)
-
-These are the older - **Dynamic** base classes - not recommended for new development, but still supported for backwards compatibility.
-
-1. `Custom.Hybrid.Razor14` - new in v14
-1. `Custom.Hybrid.Razor12` - new in v12
-1. `Custom.Dnn.Razor12` - v12; same as Hybrid, but with `Dnn` property
-1. `ToSic.Sxc.Dnn.RazorComponent` - v10
-1. `ToSic.SexyContent.Razor.SexyContentWebPage` - very old since v2 - deprecated, but the default if nothing is set.
-
 ## Fallback when Missing `@inherits`
 
 If you don't specify an `@inherits` in your code, the system will automatically apply a default base class to your code.
@@ -60,23 +50,6 @@ This is different in Dnn and Oqtane:
 1. In Oqtane the default base is `Microsoft.AspNetCore.Mvc.Razor.RazorPage` which is the default for .net 5+.
 
 
-## Compare Dynamic vs. Typed Razor
-
-The new _Typed_ base classes are much more robust and easier to debug than the classic _Dynamic_ code.
-They provide great IntelliSense (when configured in [VS Code](xref:Guides.VsCode.Index)).
-
-When used in combination with Data Models and Services in the AppCode folder, they also allow you to go **Strong Typed**.
-This is the recommended way to write code in 2sxc 16+.
-
-## Custom.Hybrid.RazorTyped
-
-> [!NOTE]
-> `RazorTyped` and `RazorTyped<TModel>` use **Typed API**.
-> See TODO:
->
-> See [Custom.Hybrid.RazorTyped](xref:Custom.Hybrid.RazorTyped)
-
-[!include["base-typed"](_base-typed.md)]
 
 ## Base Classes in the AppCode.Razor Namespace
 
@@ -97,50 +70,6 @@ Some will be auto-generated, others will be made by you.
 Razor14 almost identical with the older Razor12 (see below) with these differences:
 
 [!include["base-12-14"](_base-differences-12-14.md)]
-
-
-## Custom.Hybrid.Razor12 & Custom.Dnn.Razor12
-
-> [!NOTE]
-> `Razor12` uses the **Dynamic API**.
-> See TODO:
->
-> See [Custom.Hybrid.Razor12](xref:Custom.Hybrid.Razor12) and [Custom.Dnn.Razor12](xref:Custom.Dnn.Razor12)
-
-
-This was introduced in 2sxc 12.
-It contains the features which will work cross-platform on both Dnn and Oqtane.
-You should use this base class to create solutions / Apps which work on Dnn and Oqtane.
-
-`Custom.Dnn.Razor12` is identical with `Custom.Hybrid.Razor12` but with the addition of the `Dnn` property.
-See also [Dnn Object](xref:NetCode.CompareApis.DnnObject).
-
-### Limitations of Custom.Hybrid.Razor12
-
-[!include["base-12-limitations"](_base-12-limitations-shared.md)]
-
-1. Properties / methods `CustomizeData(...)`, `CustomizeSearch(...)` and `Purpose` do not work, because Oqtane doesn't have a search indexer.
-    This is replaced with the new [search-integration mechanism](xref:NetCode.Search.Index)
-
-1. The code-behind `Code` object doesn't work, as we probably cannot implement this in .net 5
-
-## ToSic.Sxc.Dnn.RazorComponent
-
-> [!NOTE]
-> `RazorComponent` uses the **Dynamic API**.
-> See TODO:
->
-> See [RazorComponent](xref:ToSic.Sxc.Dnn.RazorComponent)
-
-This is legacy ad is not documented any more, but you may still find older Apps which have this base class.
-
-## ToSic.SexyContent.Razor.SexyContentWebPage
-
-> [!WARNING]
-> `SexyContentWebPage` uses the **Dynamic API**.
->
-> It is very old, and regarded as deprecated.
-> But you may still find it in older Apps.
 
 ## Old Base Class If You Don't use @inherits
 

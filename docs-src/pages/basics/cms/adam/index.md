@@ -38,7 +38,7 @@ ADAM uses the Dnn file-numbering system by default, and keeps a reference to `fi
 
 <!-- * [](xref:NetCode.DynamicCode.AsAdam) -->
 * [](xref:ToSic.Sxc.Adam)
-* To access ADAM files/links in a RazorTemplate, check out `AsAdam(...)` in the [](xref:ToSic.Sxc.Dnn.RazorComponent) and [](xref:ToSic.Sxc.Dnn.ApiController)
+* To access ADAM files/links in a RazorTemplate, check out `AsAdam(...)` in the [](xref:Custom.Hybrid.ApiTyped)
 
 ## Platform Differences Dnn ☢️ & Oqtane 🩸
 

@@ -10,7 +10,7 @@ It's used on Views which are configured to have lists - and allows you to add in
 
 If the View is not a list, the Header will not be available.
 
-⚡ The [official API docs](xref:Custom.Hybrid.Razor12.Header).
+⚡ The [official API docs](xref:Custom.Hybrid.Razor14.Header).
 
 Since it's a Dynamic Entity it carries all values as properties, like `Header.Link` etc.
 

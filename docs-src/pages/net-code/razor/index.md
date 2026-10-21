@@ -42,7 +42,7 @@ The template files usually reside inside App root folder or sub folder. These al
 1. Learn the APIs using
     1. The @Tut.Razor.Home
     1. using these docs
-    1. The technical [RazorComponent API](xref:ToSic.Sxc.Dnn.RazorComponent)
+    1. The technical [RazorComponent API](xref:Custom.Hybrid.RazorTyped)
 1. We also suggest you look into the **RazorBlade** library which has a lot of neat helpers
 
 
