@@ -181,6 +181,20 @@ will retrieve the shared (scoped) context and use it to build the Execution Cont
 
 This is not final, but WIP as it could be improved, especially for clarity.
 
+#### 4.2.1 DNN
+
+In DNN, the context for Web API calls is built through a series of steps
+involving the `DnnAppApiControllerService` and the `DnnCustomWebApiHelper`.
+The process generally follows these steps:
+
+1. The `DnnAppApiControllerService` attempts to select the appropriate controller for the request.
+2. During this process, it retrieves the `edition`, `BlockSpecs`, and `app folder` information.
+3. The `BlockSpecs` are shared via the shared state to be used later by the controller.
+4. When the controller is instantiated, the `DnnCustomWebApiHelper` initializes the `BlockSpecs` from the shared state.
+5. This ensures that the execution context has all the necessary information about the block, module, and app for the request.
+
+This mechanism allows DNN to provide the necessary context for Web API calls, even when the request does not directly include all the required information.
+
 ### 5. Background Tasks
 
 ### 5.1 DNN Search Indexing
@@ -199,7 +213,7 @@ This is not final, but WIP as it could be improved, especially for clarity.
 Diagnostics initialization of module/block etc. 2026-10-20 18:35
 
 1. Custom APIs
-    1. 1x AppApiControllerSelectorService.SelectController()
+    1. 1x DnnAppApiControllerService.SelectController()
         1. Get edition
         2. block= TryGetBlockSpecsUsingModuleAndContentBlockHeaders(req)  pure 👍🏼
         3. ShareBlockSpecs()
@@ -212,6 +226,6 @@ Diagnostics initialization of module/block etc. 2026-10-20 18:35
     1. InitBlockSpecs
         1. GetBlockAndContext  TryGetBlockSpecsUsingModuleAndContentBlockHeaders
         2. ShareBlockSpecs()
-3. DnnSxcCustomControllerBase  always runs after the AppApiControllerSelectorService
+3. DnnSxcCustomControllerBase  always runs after the DnnAppApiControllerService
     1. DnnCustomWebApiHelper
 

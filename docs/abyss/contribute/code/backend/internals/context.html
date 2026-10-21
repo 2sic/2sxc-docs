@@ -265,12 +265,62 @@ it will also put it into the shared State as of now.</p>
 <p>When the DLL is then loaded, the underlying base class
 will retrieve the shared (scoped) context and use it to build the Execution Context.</p>
 <p>This is not final, but WIP as it could be improved, especially for clarity.</p>
+<h4 id="421-dnn">4.2.1 DNN</h4>
+<p>In DNN, the context for Web API calls is built through a series of steps
+involving the <code>DnnAppApiControllerService</code> and the <code>DnnCustomWebApiHelper</code>.
+The process generally follows these steps:</p>
+<ol>
+<li>The <code>DnnAppApiControllerService</code> attempts to select the appropriate controller for the request.</li>
+<li>During this process, it retrieves the <code>edition</code>, <code>BlockSpecs</code>, and <code>app folder</code> information.</li>
+<li>The <code>BlockSpecs</code> are shared via the shared state to be used later by the controller.</li>
+<li>When the controller is instantiated, the <code>DnnCustomWebApiHelper</code> initializes the <code>BlockSpecs</code> from the shared state.</li>
+<li>This ensures that the execution context has all the necessary information about the block, module, and app for the request.</li>
+</ol>
+<p>This mechanism allows DNN to provide the necessary context for Web API calls, even when the request does not directly include all the required information.</p>
 <h3 id="5-background-tasks">5. Background Tasks</h3>
 <h3 id="51-dnn-search-indexing">5.1 DNN Search Indexing</h3>
 <h3 id="52-oqtane-background-tasks">5.2 Oqtane Background Tasks</h3>
 <h2 id="history">History</h2>
 <ol>
 <li></li>
+</ol>
+<h2 id="random-notes-2dm-2026-10-26-not-finalized">Random notes 2dm 2026-10-26 not finalized</h2>
+<p>Diagnostics initialization of module/block etc. 2026-10-20 18:35</p>
+<ol>
+<li>Custom APIs
+<ol>
+<li>1x DnnAppApiControllerService.SelectController()
+<ol>
+<li>Get edition</li>
+<li>block= TryGetBlockSpecsUsingModuleAndContentBlockHeaders(req)  pure 👍🏼</li>
+<li>ShareBlockSpecs()</li>
+<li>DnnWebApiAppFolderUtilities.GetAppFolder()
+<ol>
+<li>5x!!! MAYBE: AppFolderLookupForWebApi.FindAppFolderFromScopeOrThrow () ⚠️
+2x!!! SetAppFromNameOrUrlParamsOrUseExistingBlockRequired (&quot;&quot;) ⚠️</li>
+</ol>
+</li>
+<li>If Block null! &gt; SetAppFromPathOrNull(…)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>DnnSxcControllerBase
+<ol>
+<li>DnnCustomWebApiHelper</li>
+<li>InitBlockSpecs
+<ol>
+<li>GetBlockAndContext  TryGetBlockSpecsUsingModuleAndContentBlockHeaders</li>
+<li>ShareBlockSpecs()</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>DnnSxcCustomControllerBase  always runs after the DnnAppApiControllerService
+<ol>
+<li>DnnCustomWebApiHelper</li>
+</ol>
+</li>
 </ol>
 
 </article>

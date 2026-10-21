@@ -111,7 +111,7 @@
 
 
   <h1 id="ToSic_Sys_Run_Startup_StartupSysCore" data-uid="ToSic.Sys.Run.Startup.StartupSysCore" class="text-break">
-Class StartupSysCore  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class StartupSysCore  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -154,9 +154,9 @@ public static class StartupSysCore</code></pre>
 
   <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCore_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCore*"></a>
 
-  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCore_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCore(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-  AddSysCore(IServiceCollection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCore_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Boolean_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Boolean)">
+  AddSysCore(IServiceCollection, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add all SysCore services</p>
@@ -164,13 +164,16 @@ public static class StartupSysCore</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCore(this IServiceCollection services)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCore(this IServiceCollection services, bool useMel = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>services</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
     <dd><p>The service collection to which the wrapper services will be added. Cannot be null.</p>
+</dd>
+    <dt><code>useMel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Selects MEL logging with Insights instead of the default Legacy stack.</p>
 </dd>
   </dl>
 
@@ -187,7 +190,7 @@ public static class StartupSysCore</code></pre>
 
 
 
-  <h4 class="section" id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCore_Microsoft_Extensions_DependencyInjection_IServiceCollection__remarks">Remarks</h4>
+  <h4 class="section" id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCore_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Call this method during application startup to ensure wrapper dependencies are available for injection.</p>
 </div>
 
@@ -198,7 +201,7 @@ public static class StartupSysCore</code></pre>
 
   <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreBoot_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreBoot(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
   AddSysCoreBoot(IServiceCollection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add core boot and configuration services</p>
@@ -305,18 +308,166 @@ public static class StartupSysCore</code></pre>
 
 
 
-  <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreLogging_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreLogging*"></a>
+  <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreInsightsLogger_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreInsightsLogger*"></a>
 
-  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-  AddSysCoreLogging(IServiceCollection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreInsightsLogger_Microsoft_Extensions_Logging_ILoggingBuilder_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreInsightsLogger(Microsoft.Extensions.Logging.ILoggingBuilder)">
+  AddSysCoreInsightsLogger(ILoggingBuilder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_InsightsLogging.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCoreLogging(this IServiceCollection services)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ILoggingBuilder AddSysCoreInsightsLogger(this ILoggingBuilder logging)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggingbuilder">ILoggingBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggingbuilder">ILoggingBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreLegacyLogging_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreLegacyLogging*"></a>
+
+  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreLegacyLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreLegacyLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+  AddSysCoreLegacyLogging(IServiceCollection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCoreLegacyLogging(this IServiceCollection services)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>services</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreLogging_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreLogging*"></a>
+
+  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Boolean_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Boolean)">
+  AddSysCoreLogging(IServiceCollection, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers one complete logging stack. Call once at startup; changing stacks requires an application restart.
+Factory, store and reader use the same selection so Insights cannot resolve a mixed stack.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCoreLogging(this IServiceCollection services, bool useMel = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>services</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
+    <dd></dd>
+    <dt><code>useMel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreMelInsightsLogging_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreMelInsightsLogging*"></a>
+
+  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreMelInsightsLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreMelInsightsLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+  AddSysCoreMelInsightsLogging(IServiceCollection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCoreMelInsightsLogging(this IServiceCollection services)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>services</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection">IServiceCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreMelLogging_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreMelLogging*"></a>
+
+  <h3 id="ToSic_Sys_Run_Startup_StartupSysCore_AddSysCoreMelLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="ToSic.Sys.Run.Startup.StartupSysCore.AddSysCoreMelLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+  AddSysCoreMelLogging(IServiceCollection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSysCoreMelLogging(this IServiceCollection services)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -345,7 +496,7 @@ public static class StartupSysCore</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Run.Startup/StartupSysCore_Logging.cs/#L7" class="edit-link">Edit this page</a>
         </div>
 
 
