@@ -24,3 +24,8 @@ uid: Extensions.AppExtensions.Create.Index
 ## More
 
 * [Best Practices and Tips](xref:Extensions.AppExtensions.Create.AppCode.Index){title="icon:lightbulb-fill"}
+
+## Explanations
+
+* [Settings, Resources, Presets, and App Overrides](xref:Extensions.AppExtensions.Create.SettingsAndResources.Index){title="icon:sliders"}
+  configure extension defaults and merge selected App-specific overrides
