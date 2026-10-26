@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <!-- 2sxc docs -->
+  <head>
+    <meta charset="utf-8">
+      <title>Settings and Resources in App Extensions | 2sxc 22 for Dnn and Oqtane </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Settings and Resources in App Extensions | 2sxc 22 for Dnn and Oqtane ">
+      
+      <link rel="icon" href="../../../../assets/favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/extensions/app-extensions/create/settings-and-resources/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">      
+  </head>
+
+  <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PH2TVNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GTM-PH2TVNW');
+  </script>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../../index.html">
+            <img id="logo" class="svg" src="../../../../assets/logos/vcurrent/50.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+
+
+
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+
+                <a class="btn btn-sm border-0 text-nowrap version-button" xstyle="padding: 10px 0 0 0; width: 25px" href="https://go.2sxc.org/docs-versions" target="_blank">
+                  &nbsp; v21 <i class="bi bi-caret-down-fill fs-6"></i>
+                </a>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        
+
+        <article data-uid="Extensions.AppExtensions.Create.SettingsAndResources.Index">
+<h1 id="settings-and-resources-in-app-extensions">Settings and Resources in App Extensions</h1>
+
+<p>App Extensions can provide their own <strong>settings</strong> and multi-language <strong>resources</strong>.
+The extension should always ship useful preset values, while every App that installs it
+can add its own overrides.</p>
+<p>This gives the extension two configuration layers:</p>
+<ol>
+<li><strong>Extension presets</strong> are included in the extension package and work immediately after installation.</li>
+<li><strong>App overrides</strong> belong to the App that installed the extension and replace only selected values.</li>
+</ol>
+<p>The important part is that extension code must read and merge both layers.
+Reading only one settings or resources entity would either ignore the presets or the App-specific overrides.</p>
+<h2 id="settings-compared-with-resources">Settings Compared with Resources</h2>
+<p>Use settings and resources for different purposes:</p>
+<ul>
+<li><strong>Settings</strong> control behavior, for example a theme color, page size, feature switch, or date format.</li>
+<li><strong>Resources</strong> contain labels and messages shown to users. They can be translated like other 2sxc resources.</li>
+</ul>
+<p>An extension can provide either one or both.</p>
+<h2 id="recommended-structure">Recommended Structure</h2>
+<p>The extension files and generated C# models should be grouped together:</p>
+<pre><code class="lang-text">/extensions/demo-settings-and-resources/App_Data/system/bundles/
+  /... (location for schema and preset data)
+
+/AppCode/Extensions/DemoSettingsAndResources/
+  /DemoSettingsAndResourcesHelper.cs
+/AppCode/Extensions/DemoSettingsAndResources/Data/ (generated c# models)
+  /DemoSettings.Generated.cs
+  /DemoResources.Generated.cs
+</code></pre>
+<p>The data bundle contains the ContentTypes, preset entities, and any view definitions
+that must be installed with the extension.</p>
+<h2 id="1-create-the-contenttypes-and-presets">1. Create the ContentTypes and Presets</h2>
+<p>Create one ContentType for settings and one for resources.
+Give every type several fields so partial overrides can be tested properly.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<ol>
+<li>Always place this content-type in the scope of your extension, like <code>DemoSettingsAndResources</code>.</li>
+<li>Always give it a distinct name, so that it won't conflict with other content-type names, like <code>DemoSettings</code>.</li>
+</ol>
+</div>
+<p>Example:</p>
+<h3 id="settings-example">Settings Example</h3>
+<ol>
+<li><code>Heading</code></li>
+<li><code>ThemeColor</code></li>
+<li><code>ItemsPerPage</code></li>
+<li><code>ShowDetails</code></li>
+<li><code>DateFormat</code></li>
+</ol>
+<h3 id="resources-example">Resources Example</h3>
+<ol>
+<li><code>Title</code></li>
+<li><code>Introduction</code></li>
+<li><code>SettingsLabel</code></li>
+<li><code>ResourcesLabel</code></li>
+<li><code>EmptyMessage</code></li>
+</ol>
+<h3 id="preset-entities-for-default-values">Preset Entities for Default Values</h3>
+<p>Create one entity of each type and fill every field.
+This will serve as the default values for the extension
+and must be part of the exported data bundle.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Always include the preset entities in the extension data bundle.
+Since it's important that an extension works directly after installation,
+even if the target App hasn't created any custom settings or resources yet.</p>
+</div>
+<h2 id="2-configure-the-extension-to-use-these-settingsresources">2. Configure the Extension to Use these Settings/Resources</h2>
+<p>Edit the extension configuration in <strong>App Settings &gt; App Extensions</strong> and assign the
+settings and resources ContentTypes.</p>
+<p>The resulting <code>extension.json</code> now contains their GUIDs:</p>
+<pre><code class="lang-json">{
+  &quot;settingsContentType&quot;: &quot;&lt;settings-content-type-guid&gt;&quot;,
+  &quot;resourcesContentType&quot;: &quot;&lt;resources-content-type-guid&gt;&quot;,
+  &quot;dataBundles&quot;: &quot;&lt;data-bundle-guid&gt;&quot;
+}
+</code></pre>
+<p>This connection lets App Admin show the correct edit buttons and tells export/import
+which extension configuration belongs together.</p>
+<h2 id="3-include-all-required-data-in-the-export">3. Include All Required Data in the Export</h2>
+<p>Before exporting, verify that the extension data bundle includes:</p>
+<ol>
+<li>The settings ContentType</li>
+<li>The resources ContentType</li>
+<li>The preset settings entity</li>
+<li>The preset resources entity</li>
+<li>Every view definition supplied by the extension</li>
+</ol>
+<p>The Razor files and other extension files are packaged from <code>/extensions/</code>.
+Generated C# models and helper services are packaged from <code>/AppCode/Extensions/</code>.</p>
+<p>See also <a class="xref" href="../data/index.html">Data and Schema Extensions</a>.</p>
+<h2 id="4-generate-typed-c-models">4. Generate Typed C# Models</h2>
+<p>Generate the models into the extension-specific namespace and folder, for example:</p>
+<pre><code class="lang-text">/AppCode/Extensions/DemoSettingsAndResources/Data/
+</code></pre>
+<p>Use the generated property names in code instead of dynamic string access.
+Regenerate the models whenever a settings or resources ContentType changes.</p>
+<h2 id="5-merge-presets-default-data-with-app-overrides">5. Merge Presets (Default Data) with App Overrides</h2>
+<p>When the app code runs, we can have 3 scenarios:</p>
+<ol>
+<li>No App override exists, only the preset is available.</li>
+<li>A full App override exists, which should take precedence over the preset.</li>
+<li>A partial App override exists, which should merge with the preset.</li>
+</ol>
+<p>To keep the code simple which uses these values,
+we'll create some helper service to handle the merging logic - using the 2sxc <strong>Stack</strong> feature.
+The <em>local</em> App-specific entity (the override) is the first layer
+and the extension preset is the fallback layer.</p>
+<p>The following example shows the core pattern for resources:</p>
+<pre><code class="lang-csharp">using System;
+using System.Linq;
+using AppCode.Extensions.DemoSettingsAndResources.Data;
+using Custom.Hybrid;
+
+namespace AppCode.Extensions.DemoSettingsAndResources
+{
+  public class DemoSettingsAndResourcesHelper : CodeTyped
+  {
+    public DemoResources GetResources()
+    {
+      if (_resources != null)
+        return _resources;
+
+      var items = App.Data.GetStream(nameof(DemoResources)).ToList();
+
+      switch (items.Count)
+      {
+        case 0:
+          throw new Exception(&quot;The extension resources are missing.&quot;);
+        case 1:
+          return _resources = As&lt;DemoResources&gt;(items[0]);
+        default:
+          var appOverride = items.Last();
+          var preset = items[0];
+          return _resources = AsStack&lt;DemoResources&gt;(appOverride, preset);
+      }
+    }
+
+    private DemoResources _resources;
+  }
+}
+</code></pre>
+<p>Use the same pattern for settings with <code>DemoSettings</code>.</p>
+<p>The resulting typed object behaves as one configuration:</p>
+<ul>
+<li>A property set by the App override wins.</li>
+<li>A property without an App override falls back to the extension preset.</li>
+<li>If no override entity exists, the preset entity is used directly.</li>
+<li>If no preset exists, the helper reports a clear installation/configuration error.</li>
+</ul>
+<p>Caching the result in the helper avoids rebuilding the same stack repeatedly during one request.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The Radmin App Extension uses this pattern in <code>RadminHelper.GetResources()</code>.</p>
+</div>
+<h2 id="6-use-the-settings-and-resources-in-your-code">6. Use the Settings and Resources in your Code</h2>
+<p>In the extension view, access the values.
+It's important to use the typed properties directly (so <code>settings.Heading</code> and not <code>settings.String(&quot;Heading&quot;)</code>).
+This makes missing model properties visible during development and documents the extension contract:</p>
+<pre><code class="lang-razor">@inherits Custom.Hybrid.RazorTyped
+@using AppCode.Extensions.DemoSettingsAndResources
+@{
+  var helper = GetService&lt;DemoSettingsAndResourcesHelper&gt;();
+  var settings = helper.GetSettings();
+  var resources = helper.GetResources();
+}
+
+&lt;h2&gt;@resources.Title&lt;/h2&gt;
+&lt;p&gt;@resources.Introduction&lt;/p&gt;
+
+&lt;h3&gt;@resources.SettingsLabel&lt;/h3&gt;
+&lt;dl&gt;
+  &lt;dt&gt;Heading&lt;/dt&gt;&lt;dd&gt;@settings.Heading&lt;/dd&gt;
+  &lt;dt&gt;Theme color&lt;/dt&gt;&lt;dd&gt;@settings.ThemeColor&lt;/dd&gt;
+  &lt;dt&gt;Items per page&lt;/dt&gt;&lt;dd&gt;@settings.ItemsPerPage&lt;/dd&gt;
+  &lt;dt&gt;Show details&lt;/dt&gt;&lt;dd&gt;@settings.ShowDetails&lt;/dd&gt;
+  &lt;dt&gt;Date format&lt;/dt&gt;&lt;dd&gt;@settings.DateFormat&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3&gt;@resources.ResourcesLabel&lt;/h3&gt;
+&lt;p&gt;@resources.EmptyMessage&lt;/p&gt;
+</code></pre>
+<p>Explicit property access verifies that
+the generated model, ContentType, preset data, and merge behavior
+are all implemented correctly.</p>
+<h2 id="7-verify-in-an-installed-app">7. Verify in an Installed App</h2>
+<p>Export the extension and install it in a different App.
+Then add the extension's view to a page and perform both tests.</p>
+<h3 id="test-a-presets-only">Test A: Presets Only</h3>
+<p>Do not create any App-specific settings or resources.
+Every displayed value must come from the extension presets.</p>
+<p>This proves that the package includes:</p>
+<ul>
+<li>Both ContentTypes</li>
+<li>Both preset entities</li>
+<li>The view definition</li>
+<li>Razor and AppCode files</li>
+</ul>
+<h3 id="test-b-partial-overrides">Test B: Partial Overrides</h3>
+<p>Create App-specific settings and resources, but override only one or two fields in each.</p>
+<p>Verify that:</p>
+<ul>
+<li>The changed fields use the App values.</li>
+<li>Every other field still uses the extension presets.</li>
+<li>The extension view renders without missing values or errors.</li>
+</ul>
+<p>This second test is essential. A full override could hide a broken fallback implementation.</p>
+<h2 id="export-and-verification-checklist">Export and Verification Checklist</h2>
+<ul>
+<li>[ ] Settings ContentType has been assigned in the extension configuration.</li>
+<li>[ ] Resources ContentType has been assigned in the extension configuration.</li>
+<li>[ ] Preset settings and resources contain values for every expected field.</li>
+<li>[ ] ContentTypes, preset entities, and view definitions are in the data bundle.</li>
+<li>[ ] Typed models are generated below <code>/AppCode/Extensions/&lt;ExtensionName&gt;/</code>.</li>
+<li>[ ] A helper merges App overrides over extension presets with <code>AsStack</code>.</li>
+<li>[ ] The view accesses every typed property explicitly.</li>
+<li>[ ] A clean target App works without overrides.</li>
+<li>[ ] A clean target App works with only one or two fields overridden.</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>See the
+<a href="https://github.com/2sxc-apps/app-extension-demo-settings-and-resources">Demo Settings and Resources App Extension</a>
+for a complete implementation.</p>
+<h2 id="history">History</h2>
+<ol>
+<li>App Extension settings and resources introduced in 2sxc v21.</li>
+<li>These docs added v22 ca. 2026-10</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/2sic/2sxc-docs/blob/main/docs-src/pages/extensions/app-extensions/create/settings-and-resources/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          
+          <span>
+            Made by <a href="https://www.2sic.com">2sic</a>
+            with 💖 and
+            <a href="https://dotnet.github.io/docfx">docfx</a>
+            — 
+            for <a href="https://2sxc.org">2sxc</a>,
+            <a href="https://dnncommunity.org/">Dnn</a> 
+            and <a href="https://www.oqtane.org/">Oqtane</a>
+            — 
+            see also <a href="">2sxc Github</a> and <a href="https://blazor-cms.org">Blazor CMS</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
