@@ -95,14 +95,6 @@ Code14 almost identical with the older Code12 (see below) with these differences
 
 [!include["base-12-14"](_base-differences-12-14.md)]
 
-## Custom.Hybrid.Code12 & Custom.Dnn.Code12
-
-> [!NOTE]
-> `Code12` uses the **Dynamic API**.
-> See TODO:
->
-> See [Custom.Hybrid.Code12](xref:Custom.Hybrid.Code12) and [Custom.Dnn.Code12](xref:Custom.Dnn.Code12)
-
 This was introduced in 2sxc 12.
 It contains the features which will work cross-platform on both Dnn and Oqtane.
 You should use this base class to create solutions / Apps which work on Dnn and Oqtane.
