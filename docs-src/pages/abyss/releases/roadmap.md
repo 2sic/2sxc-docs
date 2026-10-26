@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2026-10-19**
+Last Update: **2026-10-26**
 
 ## Priority 2026 All Year (v22/v23)
 
@@ -23,8 +23,8 @@ Main Priorities:
 
 1. ✅ App Extensions system and many app extensions
 1. ✅ Linux and container support for Oqtane
-1. DataSources which easily convert data to entities (raw data --> entity)
-1. Models System and conversion (entity --> model)
+1. ✅ DataSources which easily convert data to entities (raw data --> entity)
+1. ✅Models System and conversion (entity --> model)
 1. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
 1. ⌛ [Standardize logging with Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) (core implemented; hardening and Insights parity remain)
 1. ⌛ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
@@ -57,7 +57,7 @@ Main Priorities:
 ### Things for Juniors to Work On
 
 1. Template Service - Tutorials and Docs - ca. 1d
-1. App Catalog - update code to use latest Angular extension
+1. App Catalog - update code to use latest Angular extension; merge the repos
 1. EAV-UI: Deduplicate code in various places
 1. EAV-UI: create many unit tests
 1. $2sxc - many unit tests
