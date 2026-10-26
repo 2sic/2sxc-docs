@@ -57,16 +57,18 @@ Main Priorities:
 ### Things for Juniors to Work On
 
 1. Template Service - Tutorials and Docs - ca. 1d
-1. App Catalog - update code to use latest Angular extension; merge the repos
-1. EAV-UI: Deduplicate code in various places
-1. EAV-UI: create many unit tests
-1. $2sxc - many unit tests
-1. inpage - many unit tests
-1. docs - improve API output
+2. Reduce inheritance (prefer composition) - find all indirect ServiceBase derived types
+3. App Catalog - update code to use latest Angular extension; merge the repos
+4. Backend / unit testing - migrate to xUnit 3
+5. EAV-UI: Deduplicate code in various places
+6. EAV-UI: create many unit tests
+7. $2sxc - many unit tests
+8. inpage - many unit tests
+9. docs - improve API output
     1. put properties in tables
     1. put extension methods below
     1. put inherited properties below, but also in tables
-1. Try to drop the Angular Zone on quick-dialog
+10. Try to drop the Angular Zone on quick-dialog
 
 ## Major things we're working on
 
