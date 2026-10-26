@@ -202,9 +202,64 @@ If no ID is supplied, the factory normally creates one automatically.</p>
 <li>Only provide an ID or GUID when the source has a meaningful one.</li>
 </ol>
 <p>For positional records, use <code>[property: ContentTypeTitle]</code> as shown above.</p>
-<p>Keep the values simple: strings, numbers, booleans, dates, and similar scalar values.
-Nested objects are not converted recursively.</p>
-<p>If a nested object must be included in the JSON, allow it explicitly and test the resulting response:</p>
+<p>Keep the values simple: strings, numbers, booleans, dates, and similar scalar values.</p>
+<h2 id="attributes-on-raw-model-fields">Attributes on Raw-Model Fields</h2>
+<p>The converter inspects public properties and infers normal scalar field types from their C# types.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[ContentTypeTitle]</code></td>
+<td>Marks the entity title; shorthand for <code>[ContentTypeField(IsTitle = true)]</code>.</td>
+</tr>
+<tr>
+<td><code>[ContentTypeField(...)]</code></td>
+<td>Changes the generated field name, type, title status, description, or work-in-progress input type.</td>
+</tr>
+<tr>
+<td><code>[ContentTypeIgnore]</code></td>
+<td>Excludes a public property from the generated content-type definition.</td>
+</tr>
+</tbody>
+</table>
+<p><code>ContentTypeIgnore</code> only changes the generated definition; automatic raw conversion still reads public properties as values. If a value must not be returned, do not expose it as a public property or use a custom converter.</p>
+<p><code>ContentTypeField</code> has <code>Name</code>, <code>Type</code>, <code>IsTitle</code>, <code>Description</code>, and <code>InputTypeWIP</code> settings.
+Usually only <code>Type</code> is needed: it overrides the inferred EAV <code>ValueTypes</code> value.
+Common overrides are <code>Hyperlink</code>, <code>Entity</code>, and <code>Object</code>; use <code>Entity</code> for relationships and <code>Object</code> for nested JSON.</p>
+<p>On normal properties, place the attribute directly on the property:</p>
+<pre><code class="lang-csharp">[ContentTypeTitle]
+public required string Name { get; init; }
+
+[ContentTypeField(Type = ValueTypes.Hyperlink)]
+public required string Url { get; init; }
+
+[ContentTypeIgnore] // Only omitted from the generated definition
+public string SchemaOnlyValue { get; init; } = &quot;&quot;;
+</code></pre>
+<p>For positional records, target the generated property:</p>
+<pre><code class="lang-csharp">internal sealed record ExampleRaw(
+    [property: ContentTypeTitle] string Name,
+    [property: ContentTypeField(Type = ValueTypes.Hyperlink)] string Url
+) : IRawEntityAutoConvert;
+</code></pre>
+<h3 id="deep-data-with-valuetypesobject">Deep Data with <code>ValueTypes.Object</code></h3>
+<p>Mark nested DTOs, dictionaries, lists, and arrays as <code>ValueTypes.Object</code> when they should remain deep data in the JSON response:</p>
+<pre><code class="lang-csharp">[ContentTypeField(Type = ValueTypes.Object)]
+public required IEnumerable&lt;ParameterRaw&gt; Parameters { get; init; }
+
+[ContentTypeField(Type = ValueTypes.Object)]
+public required IDictionary&lt;string, object?&gt; Security { get; init; }
+</code></pre>
+<p><code>Object</code> keeps the property as an object-valued entity field.
+It is not recursively converted into more 2sxc entities; the JSON serializer emits the contained values as deep JSON.
+An <code>Object</code> field automatically enables unknown/object values for that conversion.
+For attributed <code>IRawEntityAutoConvert</code> models, use the attribute instead of setting <code>AllowUnknownValueTypes</code> manually.</p>
+<p>Use the factory option below for dynamic data with no attributed property schema, such as a <code>RawEntity</code> with runtime-defined fields:</p>
 <pre><code class="lang-csharp">ProvideOutRaw(
     GetList,
     options: () =&gt; new()
@@ -308,6 +363,10 @@ ProvideOutRaw(GetWarnings, name: &quot;Warnings&quot;);
 <td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.Context/Context/Sys/Languages/AppLanguageState.cs"><code>AppLanguageState</code></a> and <a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.DataSources/DataSources.Sys/AppLanguages.cs"><code>AppLanguages</code></a></td>
 </tr>
 <tr>
+<td>Field attributes and deep objects</td>
+<td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.WebApi/WebApi.Sys/Dto/InputTypeInfoRaw.cs"><code>InputTypeInfoRaw</code></a>, <a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.WebApi/WebApi.Sys/Dto/AppWebApiEndpointRaw.cs"><code>AppWebApiEndpointRaw</code></a>, and <a href="https://github.com/2sic/2sxc/blob/master/Src/Sxc/ToSic.Sxc.WebApi/Backend/Views/ViewDetailsDto.cs"><code>ViewDetailsDto</code></a></td>
+</tr>
+<tr>
 <td>Multiple named streams</td>
 <td><a href="https://github.com/2sic/eav-server/blob/master/ToSic.Eav.WebApi/WebApi.Sys/Admin/SystemInfo.cs"><code>SystemInfo</code></a></td>
 </tr>
@@ -329,6 +388,7 @@ ProvideOutRaw(GetWarnings, name: &quot;Warnings&quot;);
 <hr>
 <h2 id="history">History</h2>
 <ul>
+<li>Documented raw-model field attributes and deep <code>Object</code> data 2026-10-22</li>
 <li>Documented raw DataSource return conventions 2026-10-02</li>
 </ul>
 

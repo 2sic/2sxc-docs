@@ -110,17 +110,19 @@ This guide covers updating an existing development installation by building and 
 For the initial setup, see <a class="xref" href="../code/index.html">Contribute to 2sxc / EAV</a>.</p>
 <p>The ILogger integration upgrades the DNN logging dependencies from 2.1.1 to 8.0.0.
 Copying the new DLLs alone does not update the DNN host's assembly binding redirects.
-Apply the following steps even if you continue using Legacy logging.</p>
+Apply the following steps even if you continue using Legacy logging.
+Installing or upgrading the 2sxc DNN module ZIP normally updates these redirects through the DNN installer; a Debug build does not run that installer.</p>
 <h2 id="1-prepare-the-existing-environment">1. Prepare the Existing Environment</h2>
 <ol>
 <li>Back up the development site's <code>web.config</code>, deployed 2sxc files and database so you can restore the previous environment.</li>
 <li>For DNN, use <strong>DNN 10.1 or later on .NET Framework 4.8</strong>, as required by the current module manifest.
 Upgrade an older DNN host and 2sxc module through its normal upgrade process before deploying the current development build.</li>
 </ol>
+<p>The current source requires the <strong>.NET 10 SDK</strong> to build the modern targets and build tools. DNN itself still runs on .NET Framework 4.8.</p>
 <h2 id="2-dnn-build-and-update-the-assemblies">2. DNN: Build and Update the Assemblies</h2>
 <ol>
 <li><p>Restore NuGet packages and build the DNN project, <code>2sxc/Src/Dnn/ToSic.Sxc.Dnn/ToSic.Sxc.Dnn.csproj</code>, in <strong>Debug</strong> using your configured development build.
-This also builds its EAV and 2sxc project references.</p>
+This also builds its EAV and 2sxc project references. The Debug copy step deploys to the website configured in <code>DnnTargets</code> in <code>2sxc-build.config.json</code> (for example, <code>D:/Projects/2sxc/2sxc-dnn/Website</code>).</p>
 </li>
 <li><p>Verify these four DLLs in the <strong>DNN website's <code>bin</code> folder</strong>:</p>
 <table>
@@ -167,7 +169,8 @@ The installation manifest uses <strong>file versions</strong>; binding redirects
 <h5>Important</h5>
 <p>A newer DNN host may already supply newer Microsoft.Extensions assemblies.
 Preserve the host's compatible dependency set and redirects; do not overwrite newer host DLLs with the 8.0.0 copies or redirect them back to 8.0.0.0.
-The XML in the next step applies when the deployed assemblies are version 8.0.0.0.</p>
+The XML in the next step applies when the deployed assemblies are version 8.0.0.0.
+The Debug copy step does not reconcile binding redirects.</p>
 </div>
 <h3 id="other-logging-dependencies">Other Logging Dependencies</h3>
 <p>The current manifest and packaging rules already cover the other ILogger dependencies, including
@@ -257,7 +260,7 @@ Preserve unrelated entries and the existing assembly-binding section.</p>
 The redirects and the deployed DLLs must agree.</p>
 <h2 id="4-oqtane-update-through-the-existing-development-build">4. Oqtane: Update Through the Existing Development Build</h2>
 <ol>
-<li>Restore and build the Oqtane projects with the SDK and host version required by the checked-out source.
+<li>Restore and build the Oqtane projects with the <strong>.NET 10 SDK</strong> against an <strong>Oqtane 10.2+ host on .NET 10</strong>.
 Use the existing Oqtane development copy configuration to update the module and its 2sxc/EAV assemblies.
 Oqtane supplies logging through the ASP.NET Core shared framework, and <code>DiagnosticSource</code> is part of the .NET runtime.</li>
 <li>Restart the application after updating the module files.</li>
@@ -286,6 +289,7 @@ See the <a class="xref" href="../../releases/epics/logging.html">logging roadmap
 <h2 id="history">History</h2>
 <ul>
 <li>2026-10-20: Add the v22.01 development upgrade guide for logging dependencies, DNN binding redirects and optional MEL configuration.</li>
+<li>2026-10-23: Clarify Debug copy behavior, post-edit verification and the .NET 10/Oqtane requirements.</li>
 </ul>
 
 </article>
