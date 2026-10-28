@@ -106,16 +106,69 @@
 <h1 id="planned-technical-debt">Planned Technical Debt</h1>
 
 <p>This page collects planned technical debt items, so that we'll be able to address them all in one go when we do it.</p>
-<h2 id="logging">Logging</h2>
+<h2 id="1-logging">1. Logging</h2>
 <p>In v22 / v23 we plan to move logging to Microsoft.Extensions.Logging.</p>
-<h2 id="dependency-injection">Dependency Injection</h2>
+<h2 id="2-dependency-injection">2. Dependency Injection</h2>
 <ol>
 <li>Dependency Injection of exotic context information (Page, ExecutionContext, etc.)</li>
 </ol>
-<h2 id="nullable-projects">Nullable Projects</h2>
+<h2 id="3-nullable-projects">3. Nullable Projects</h2>
 <ol>
 <li>Make the DNN project nullable</li>
 <li>Make the Oqtane project nullable</li>
+</ol>
+<h2 id="4-composition-over-inheritance">4. Composition over Inheritance</h2>
+<p>We have a lot of inheritance built into the system,
+and this causes a lot of difficulties following code
+and making changes without introducing unintended side effects.</p>
+<p>We should aim to refactor the system to favor composition over inheritance wherever possible.</p>
+<h3 id="41-how-to-find-problematic-inheritance">4.1. How to find problematic inheritance</h3>
+<ol>
+<li>Look for classes that inherit from <code>ServiceBase&lt;T&gt;</code> but not from <code>DataSourceBase</code> - probably exporting both lists to text and then filter</li>
+<li>Look for classes that inherit from <code>ServiceBase</code> <em>indirectly</em></li>
+</ol>
+<h3 id="42-how-to-refactor">4.2. How to Refactor</h3>
+<p>TODO</p>
+<h4 id="421-option-1create-a-helper-for-shared-logic">4.2.1. Option 1:Create a Helper for Shared Logic</h4>
+<p>When refactoring inheritance to composition, identify the logic that is shared across multiple classes and extract it into a helper class or service.
+This allows the shared functionality to be reused without relying on a common base class.</p>
+<p>This helper can be</p>
+<ol>
+<li>injected</li>
+<li>called by the implementation</li>
+</ol>
+<p>Example (conceptual, not code):</p>
+<p>Suppose multiple classes need to perform logging.
+Instead of having them inherit from a common base class that provides logging functionality,
+you can create a <code>LoggingHelper</code> class that encapsulates the logging logic.
+Each class can then either have the <code>LoggingHelper</code> injected or call it directly to perform logging.</p>
+<h4 id="422-option-2-use-providers">4.2.2. Option 2: Use Providers</h4>
+<p>Another approach to refactoring inheritance to composition is to use providers.
+Providers encapsulate specific functionality and can be injected into classes that need them.
+This allows classes to delegate responsibilities to providers instead of relying on a common base class.</p>
+<p>For example, if multiple classes need to access configuration settings,
+you can create a <code>ConfigurationProvider</code> and inject it into the classes that require it.
+So a core service would be the main service (like an <code>ExportService</code>)
+but it would use an <code>ExportConfigProvider</code> which is specific to the implementation.</p>
+<h3 id="43-candidates">4.3. Candidates</h3>
+<ol>
+<li><code>AppsCacheBase</code> @STV</li>
+<li>Things inheriting from <code>AdamWorkBase</code></li>
+<li>Things inheriting from <code>SerializerBase</code></li>
+<li><code>Eav.DataSources.App</code> and <code>AppDataWithCrud</code></li>
+<li><code>AppBase&lt;SxcAppBase.Dependencies&gt;</code></li>
+<li><code>Query</code> and <code>TypedQuery</code></li>
+<li><code>BlockEditorBase</code> and <code>...Entity</code>, <code>...Module</code></li>
+<li>Various <code>...Providers</code> incl. <code>SitesDataSourceProvider</code> (<code>DnnSitesDsProvider</code>) <code>AdamDataSourceProvider</code>...</li>
+<li><code>CodeApiServiceBase</code> and derived types</li>
+<li>maybe <code>ExecutionContext</code> - but not sure</li>
+<li><code>ConvertToEavLight</code> and derived</li>
+<li><code>UiContextBuilderBase</code> and derived types</li>
+<li><code>AdamSecurityChecksBase</code> and derived types</li>
+</ol>
+<p>Note: Non-candidates are:</p>
+<ol>
+<li>Things derived from <code>DataSourceBase</code></li>
 </ol>
 
 </article>

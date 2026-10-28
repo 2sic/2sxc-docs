@@ -22,15 +22,15 @@ Last Update: **2026-10-26**
 Main Priorities:
 
 1. ✅ App Extensions system and many app extensions
-1. ✅ Linux and container support for Oqtane
-1. ✅ DataSources which easily convert data to entities (raw data --> entity)
-1. ✅Models System and conversion (entity --> model)
-1. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
-1. ⌛ [Standardize logging with Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) (core implemented; hardening and Insights parity remain)
-1. ⌛ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
-1. ⌛ [Automatic Code Generation](xref:Abyss.Releases.Epics.AutoGenerateAppDataModels) (Typed, Models, Automated) and ✅ IntelliSense improvements
-1. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
-1. Reduce [technical debt](xref:Abyss.Releases.Planned.TechnicalDebt)
+2. ✅ Linux and container support for Oqtane
+3. ✅ DataSources which easily convert data to entities (raw data --> entity)
+4. ✅Models System and conversion (entity --> model)
+5. ✅ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
+6. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
+7. ⌛ [Standardize logging with Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) (core implemented; hardening and Insights parity remain)
+8. ⌛ [Automatic Code Generation](xref:Abyss.Releases.Epics.AutoGenerateAppDataModels) (Typed, Models, Automated) and ✅ IntelliSense improvements
+9. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
+10. Reduce [technical debt](xref:Abyss.Releases.Planned.TechnicalDebt)
 
 ### Resources 2026
 
@@ -43,8 +43,8 @@ Main Priorities:
 ### To Be Released in v22
 
 1. @STV: Code Copilot: Auto-Generate models as they change - ca. 75% ⏳
-1. @STV: [Logging move to Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) - ca. 70% ⏳; opt-in on `develop`, validation and release work remain
-1. @STV: Unique value constraints - ca. 75% ⏳
+2. @STV: [Logging move to Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) - ca. 70% ⏳; opt-in on `develop`, validation and release work remain
+3. @STV: Unique value constraints - ca. 75% ⏳
 
 ### Things to Finalize and Document / Blog / Tutorial
 
@@ -57,7 +57,7 @@ Main Priorities:
 ### Things for Juniors to Work On
 
 1. Template Service - Tutorials and Docs - ca. 1d
-2. Reduce inheritance (prefer composition) - find all indirect ServiceBase derived types
+2. [Reduce inheritance (prefer composition)](xref:Abyss.Releases.Planned.TechnicalDebt) - find all indirect ServiceBase derived types
 3. App Catalog - update code to use latest Angular extension; merge the repos
 4. Backend / unit testing - migrate to xUnit 3
 5. EAV-UI: Deduplicate code in various places
