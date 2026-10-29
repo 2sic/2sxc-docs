@@ -107,6 +107,61 @@
 
 <h2 id="version-22">Version 22</h2>
 <hr>
+<h3 id="2sxc-v220100-2026-10-29">2sxc v22.01.00 (2026-10-29)</h3>
+<h4 id="highlights">Highlights</h4>
+<ol>
+<li>Added a lot more XML Docs for C# APIs (VS Code IntelliSense)</li>
+<li>Major improvement in data Admin UI for lists containing more than 1000 items or many columns<br>
+Now the UI will only retrieve the first 1'000 items and only the primary columns,
+allowing the admin to select what he really wants to load so everything is much faster.</li>
+<li>Preparations to support .net <code>Microsoft.Extensions.Logging</code> when using insights (Beta)</li>
+</ol>
+<h4 id="raw-entity-conversion-apis-">Raw Entity Conversion APIs 🦴</h4>
+<ol>
+<li>🦴 Improve raw to Entity conversion by respecting properties which have the attribute <code>[ContentTypeField(Type = ValueTypes.Object)]</code></li>
+</ol>
+<h4 id="bugfixes">Bugfixes</h4>
+<ol>
+<li>🐞 Fixed issue saving custom data through API, which sometimes resulted in a DB error because of reuse of DB context</li>
+<li>🪲 Bug activating / deactivating features - every toggle reloaded the page</li>
+<li>🪲 Minor bug which prevented view-metadata from being edited</li>
+<li>🪲 Minor bug searching for features / licenses in Admin-UI</li>
+</ol>
+<h4 id="oqtane-">Oqtane 🩸</h4>
+<ol>
+<li>🩸 Ensure that XML Docs are included in distribution</li>
+<li>🩸 Update ImageFlow 1.13.1 and .net runtimes for that.</li>
+<li>🩸 Ensure XML docs are included in the distribution.</li>
+<li>🩸 Shrink Oqtane distribution from ca. 46MB to 30MB thanks to better ImageFlow binaries without debug data.</li>
+</ol>
+<h4 id="javascript">JavaScript</h4>
+<ol>
+<li>Republished npm packages <code>@2sic/2sxc-typings</code> - <a href="https://www.npmjs.com/package/@2sic.com/2sxc-typings">https://www.npmjs.com/package/@2sic.com/2sxc-typings</a></li>
+<li>Include typed API for fetch commands where the data posted and retrieved are different</li>
+</ol>
+<h4 id="sysdata">SysData</h4>
+<ol>
+<li>Finish migration of SysData and dropped SpawnNew (an old, bad idea)</li>
+<li>Drop almost all cases of <code>AllowUnknownValueTypes</code> and replace with the content-type attribute</li>
+<li>Slim down the code needed for most custom data sources using <code>override</code> and primary constructor.</li>
+</ol>
+<h4 id="internal-and-code-hygiene">Internal and Code Hygiene</h4>
+<ol>
+<li>Slim down DataSources - move logic to handle <code>any</code> data to <code>DataSource16</code> (originally in <code>DataSourceCustom</code>)</li>
+<li>Further clean up public APIs to hide APIs which should not be used.</li>
+<li>NPM package for sxc-angular republished with v22, various changes. <a href="https://www.npmjs.com/package/@2sic.com/sxc-angular">https://www.npmjs.com/package/@2sic.com/sxc-angular</a></li>
+<li>Update all .net projects from .net 9 to .net 10 (DNN and Oqtane)</li>
+<li>Improve code for internal <code>UrlValues</code> objects</li>
+<li>Replace handling of <code>IResponseMaker</code></li>
+<li>Split state objects from the factory, such as <code>IUser</code>, <code>ISite</code>, <code>IModule</code> etc.</li>
+<li>Dramatically improve <code>ContextOf...</code> incl. <code>ISxcCurrentContextService</code> and clarify code paths which prepare and consume. (major)</li>
+<li>Improve code structure of permission checkers (composition over inheritance)</li>
+<li>Do composition over inheritance for <code>XmlExporter</code> and make for <em>functional</em></li>
+<li>Prevent delete app which has shared content-types used by other apps</li>
+<li>Improve Admin-UI when viewing App details, fewer backend calls</li>
+<li>Drop old <code>SpawnNew</code> convention (internal)</li>
+</ol>
+<hr>
 <h3 id="2sxc-v220000-2026-09-01">2sxc v22.00.00 (2026-09-01)</h3>
 <h4 id="highlights">Highlights</h4>
 <ol>

@@ -11,7 +11,7 @@ And sometimes a customer will need a feature quickly - and pay for it - then it 
 > [!TIP]
 > You too can sponsor a feature to make things happen sooner!
 
-Last Update: **2026-10-26**
+Last Update: **2026-10-29**
 
 ## Priority 2026 All Year (v22/v23)
 
@@ -24,13 +24,14 @@ Main Priorities:
 1. ✅ App Extensions system and many app extensions
 2. ✅ Linux and container support for Oqtane
 3. ✅ DataSources which easily convert data to entities (raw data --> entity)
-4. ✅Models System and conversion (entity --> model)
+4. ✅ Models System and conversion (entity --> model)
 5. ✅ Reduce internal WebAPI endpoints and replace them with SysData DataSources to leverage ODATA and other features
-6. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
-7. ⌛ [Standardize logging with Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) (core implemented; hardening and Insights parity remain)
-8. ⌛ [Automatic Code Generation](xref:Abyss.Releases.Epics.AutoGenerateAppDataModels) (Typed, Models, Automated) and ✅ IntelliSense improvements
-9. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
-10. Reduce [technical debt](xref:Abyss.Releases.Planned.TechnicalDebt)
+6. ✅ IntelliSense improvements
+7. ⌛ Push away from all old dynamic code; this also means removing it in docs / tutorials
+8. ⌛ [Standardize logging with Microsoft.Extensions.Logging](xref:Abyss.Releases.Epics.Logging) (core implemented; hardening and Insights parity remain)
+9. ⌛ [Automatic Code Generation](xref:Abyss.Releases.Epics.AutoGenerateAppDataModels) (Typed, Models, Automated)
+10. ⏸️ [Make data edit UIs usable for other non-entity data](xref:Abyss.Releases.Epics.EditAnyData)
+11. Reduce [technical debt](xref:Abyss.Releases.Planned.TechnicalDebt)
 
 ### Resources 2026
 
