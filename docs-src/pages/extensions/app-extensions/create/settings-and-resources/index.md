@@ -21,7 +21,14 @@ Reading only one settings or resources entity would either ignore the presets or
 In a properly configured extension,
 the settings and resources can be managed directly in the extensions UI.
 
-TODO: @2rb - create 2-3 screenshot here (docs gallery) of radmin or something, showing how to use.
+Open **App Extensions**, then use the gear icon to edit its settings or the language icon
+to edit its multi-language resources.
+
+<div gallery="extension-settings-and-resources">
+  <img src="./assets/extensions-overview.png">
+  <img src="./assets/edit-extension-settings.png">
+  <img src="./assets/edit-extension-resources.png">
+</div>
 
 ## Settings Compared with Resources
 
@@ -60,7 +67,11 @@ Give every type several fields so partial overrides can be tested properly.
 > 1. Always place this content-type in the scope of your extension, like `DemoSettingsAndResources`.
 > 2. Always give it a distinct name, so that it won't conflict with other content-type names, like `DemoSettings`.
 
-TODO: @2rb screenshot of the data showing these content-types and highlighting that we are in another schema
+The scope selector and the ContentType list should then look like this:
+
+<div gallery="extension-content-types">
+  <img src="./assets/contenttype-demo-settings-resources.png">
+</div>
 
 Example:
 
@@ -96,7 +107,9 @@ and must be part of the exported data bundle.
 Edit the extension configuration in **App Settings > App Extensions** and assign the
 settings and resources ContentTypes.
 
-TODO: @2rb - add screenshot of this being configured (the edit dialog), highlight the important fields
+<div gallery="extension-configuration">
+  <img src="./assets/extension-configuration.png">
+</div>
 
 The resulting `extension.json` now contains their GUIDs:
 
@@ -121,7 +134,9 @@ Before exporting, verify that the extension data bundle includes:
 4. The preset resources entity
 5. Every view definition supplied by the extension
 
-TODO: @2rb - add screenshot of the bundle configuration dialog showing this
+<div gallery="extension-data-bundle">
+  <img src="./assets/databundle-detail.png">
+</div>
 
 The Razor files and other extension files are packaged from `/extensions/`.
 Generated C# models and helper services are packaged from `/AppCode/Extensions/`.
