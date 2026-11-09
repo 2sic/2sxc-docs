@@ -124,7 +124,7 @@ Class ServiceWithSetup&lt;TServices, TOptions&gt;  <a class="header-action link-
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[InternalApi_DoNotUse_MayChangeWithoutNotice(&quot;Still WIP as of v22&quot;)]
-public abstract class ServiceWithSetup&lt;TServices, TOptions&gt; : ServiceBase, IHasLog, IHasOptions&lt;TOptions&gt;, IServiceWithSetup&lt;TOptions&gt; where TServices : IDependencies where TOptions : class, new()</code></pre>
+public abstract class ServiceWithSetup&lt;TServices, TOptions&gt; : ServiceBase, IHasLog, IHasOptions&lt;TOptions&gt;, IServiceWithSetup&lt;TOptions&gt; where TServices : IDependencies where TOptions : class</code></pre>
   </div>
 
 
@@ -300,10 +300,15 @@ public abstract class ServiceWithSetup&lt;TServices, TOptions&gt; : ServiceBase,
 
   <h3 id="ToSic_Sys_Services_ServiceWithSetup_2_GetDefaultOptions" data-uid="ToSic.Sys.Services.ServiceWithSetup`2.GetDefaultOptions">
   GetDefaultOptions()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.T.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/2sic/eav-server/blob/develop/ToSic.Sys.Core/Sys.Services/ServiceWithSetup.T.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Method to generate new / default options. You can override this to provide your own default options.</p>
+  <div class="markdown level1 summary"><p>Method to generate new / default options.
+This should usually not be called, but it might;
+so if your service can work without valid options (or accesses options before setup), this would trigger.</p>
+<p>This could also be triggered, if the service was created without the correct Generator.
+Note that it's always an option to just throw an exception.</p>
+<p>You must override this to provide your own default options.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -325,6 +330,11 @@ public abstract class ServiceWithSetup&lt;TServices, TOptions&gt; : ServiceBase,
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ServiceOptionsRequiredException</span></dt>
+    <dd></dd>
+  </dl>
 
 
 
