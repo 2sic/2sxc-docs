@@ -9,13 +9,15 @@ uid: Abyss.Platforms.Dnn.Index
 [Dnn](https://www.dnnsoftware.com/) is the most popular open-source CMS platform on .net.
 It's been around since ca. 2001.
 
-2sxc has been running on Dnn since it's inception in 2012.
+2sxc has been running on Dnn since 2012.
 
 ## Dnn and 2sxc Version Compatibilities
 
 | Dnn V.    | Best       | Compatible            | Incompatible       | Comments                                                                |
 | ---       | -----      | -------------------   | -------------      | ---                                                                     |
-| 10.02+    | latest     | ✅ ca. v21.01 - latest| ⛔ before v21.01   | Changes in DNN JS/CSS dependency handling and web-controls              |
+| 10.03+    | latest     | ✅ ca. v20 - latest   | ⛔ pre v20         | Dnn fixed the issues in v10.02                                          |
+| 10.02     | latest     | ✅ ca. v21.01 - latest| ⛔ before v21.01   | Changes in DNN JS/CSS dependency handling and web-controls              |
+| 10.00+    | latest     | ✅ ca. v20 - latest   | ⛔ pre v20         |                                                                         |
 | 9.11.02+  | latest     | ✅ ca. v9 - latest    | ⛔ pre v9          |                                                                         |
 | 9.6.1+    | latest     | ✅ ca. v9 - v19       | ⛔ pre v9 and v20+ | changes to DI and .net 4.8, minimum requirements in 2sxc 20+            |
 | 8.0 - 9.6 | 13.x LTS   | ✅ 9.x - 13.x         | ⛔ 14.00+          |                                                                         |
@@ -31,7 +33,8 @@ We are very focused on making upgrades easy and pain-free.
 Here's what you need to know:
 
 1. You can upgrade 2sxc by installing the latest version on a system which already has 2sxc installed.
-1. If you have a version _before_ 8.12, you must first upgrade to 8.12.
+1. If you have a version _before_ 8.12, you must first upgrade to 8.12, as the latest versions don't include old upgrade paths.
+1. If you have a version _before_ 15, you must first upgrade to 15, as the latest versions don't include old upgrade paths.
 1. In general when updating from v9 to v14 there are no expected problems.
 1. Before going to v14 you must be running DNN 9.6.1 or newer.
 1. In _very rare cases_ you may be affected by [breaking changes](xref:Abyss.Releases.History.AllChanges)
