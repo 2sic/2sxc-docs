@@ -67,19 +67,21 @@ but it would use an `ExportConfigProvider` which is specific to the implementati
 
 ### 4.3. Candidates
 
+1. ✅ HelperBase (all done)
 1. `AppsCacheBase` @STV
-1. Things inheriting from `AdamWorkBase`
+1. ✅ Things inheriting from `AdamWorkBase`
 1. Things inheriting from `SerializerBase`
 1. `Eav.DataSources.App` and `AppDataWithCrud`
-1. `AppBase<SxcAppBase.Dependencies>`
+1. ✅ `AppBase<SxcAppBase.Dependencies>`
 1. `Query` and `TypedQuery`
-1. `BlockEditorBase` and `...Entity`, `...Module`
+1. ✅ `BlockEditorBase` and `...Entity`, `...Module`
 1. Various `...Providers` incl. `SitesDataSourceProvider` (`DnnSitesDsProvider`) `AdamDataSourceProvider`...
-1. `CodeApiServiceBase` and derived types
+1. ✅ `CodeApiServiceBase` and derived types
 1. maybe `ExecutionContext` - but not sure
 1. `ConvertToEavLight` and derived
 1. `UiContextBuilderBase` and derived types
-1. `AdamSecurityChecksBase` and derived types
+1. ✅ `AdamSecurityChecksBase` and derived types
+1. ✅ `CodeHelperBase` and derived types
 
 Note: Non-candidates are:
 
